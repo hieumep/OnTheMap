@@ -12,7 +12,7 @@ import UIKit
 extension DBClient{
     
     // authenticate with login {user, password}
-    func authenticateWithViewController(hostViewController: UIViewController, infoUser : [String:String], completionHandler: (success: Bool, errorString: String?) -> Void) {
+    func authenticateWithViewController(hostViewController: UIViewController, infoUser : [String:String], completionHandler: (success: Bool, errorString: NSError?) -> Void) {
         getSessionUdacity(infoUser) {(success,error) in
             if success {
                 print ("\(self.userID)")
@@ -25,34 +25,34 @@ extension DBClient{
     }
     
     // authenticate with Facebook Login 
-    func authenticateWithFacebook(hostViewController:UIViewController, accessToken : String, completionHandler : (success:Bool, errorString:String?) -> Void){
+    func authenticateWithFacebook(hostViewController:UIViewController, accessToken : String, completionHandler : (success:Bool, error:NSError?) -> Void){
         getUserIDViaFacebookLogin(accessToken){(success,error) in
             if success {
                 print ("\(self.userID)")
-                completionHandler(success: true, errorString: nil)
+                completionHandler(success: true, error: nil)
             }else{
-                completionHandler(success: false, errorString: error)
+                completionHandler(success: false, error: error)
             }
         }        
     }
     
     //get userId via login Udacity
-    func getSessionUdacity(infoUser:[String:String],completionHandler : (success : Bool, error : String?) -> Void){
+    func getSessionUdacity(infoUser:[String:String],completionHandler : (success : Bool, error : NSError?) -> Void){
         let urlString  = DBClient.Constants.baseURL + DBClient.Methods.session
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-      //  let httpBody = "{\"\(DBClient.JSONBody.Udacity)\": {\"\(DBClient.JSONBody.Username)\": \"\(infoUser[DBClient.JSONBody.Username]!)\", \"\(DBClient.JSONBody.Password)\": \"\(infoUser[DBClient.JSONBody.Password]!)\"}}"
-        request.HTTPBody = "{\"udacity\": {\"username\": \"voquanghieu@gmail.com\", \"password\": \"vqhieu1984\"}}".dataUsingEncoding(NSUTF8StringEncoding)        
-        //request.HTTPBody = httpBody.dataUsingEncoding(NSUTF8StringEncoding)
+        let httpBody = "{\"\(DBClient.JSONBody.Udacity)\": {\"\(DBClient.JSONBody.Username)\": \"\(infoUser[DBClient.JSONBody.Username]!)\", \"\(DBClient.JSONBody.Password)\": \"\(infoUser[DBClient.JSONBody.Password]!)\"}}"
+      //  request.HTTPBody = "{\"udacity\": {\"username\": \"voquanghieu@gmail.com\", \"password\": \"vqhieu1984\"}}".dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = httpBody.dataUsingEncoding(NSUTF8StringEncoding)
         self.dataTaskWithRequest(request){(JSONResult, error) in
             if let error = error {
-                print(error)
-                completionHandler(success: false, error: "Can't get session from Udacity")
+                print(error.localizedDescription)
+                completionHandler(success: false, error: error)
             }else{
                 guard let account = JSONResult[DBClient.JSONResponseKey.Account] as? [String:NSObject] else {
-                    completionHandler(success: false, error: "Can't get Account form JSON data")
+                    completionHandler(success: false, error: error)
                     return
                 }
                 if let userID = account[DBClient.JSONResponseKey.userID] as? String {
@@ -64,7 +64,7 @@ extension DBClient{
     }
     
     //get userID via login facebook
-    func getUserIDViaFacebookLogin(accessToken : String!, completionHandler : (success:Bool, error:String?) -> Void){
+    func getUserIDViaFacebookLogin(accessToken : String!, completionHandler : (success:Bool, error: NSError?) -> Void){
         let urlString  = DBClient.Constants.baseURL + DBClient.Methods.session
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         request.HTTPMethod = "POST"
@@ -73,11 +73,11 @@ extension DBClient{
         request.HTTPBody = "{\"facebook_mobile\": {\"access_token\": \"\(accessToken)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
         self.dataTaskWithRequest(request){(JSONResult, error) in
             if let error = error {
-                print(error)
-                completionHandler(success: false, error: "Can't get session from Udacity")
+                print(error.localizedDescription)
+                completionHandler(success: false, error: error)
             }else{
                 guard let account = JSONResult[DBClient.JSONResponseKey.Account] as? [String:NSObject] else {
-                    completionHandler(success: false, error: "Can't get Account form JSON data")
+                    completionHandler(success: false, error: error)
                     return
                 }
                 if let userID = account[DBClient.JSONResponseKey.userID] as? String {
@@ -88,7 +88,7 @@ extension DBClient{
         }
     }
     
-    func logoutUdacity(hostViewController : UIViewController, completionHandler : (success:Bool, errorString : String?) -> Void){
+    func logoutUdacity(hostViewController : UIViewController, completionHandler : (success:Bool, error:NSError?) -> Void){
         let urlString  = DBClient.Constants.baseURL + DBClient.Methods.session
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         var xsrfCookie: NSHTTPCookie? = nil
@@ -102,9 +102,9 @@ extension DBClient{
         self.dataTaskWithRequest(request){(JSONResult, error) in
             if let error = error {
                 print(error)
-                completionHandler(success: false, errorString: "Can't log out")
+                completionHandler(success: false,error: error)
             }else{
-                completionHandler(success: true, errorString: nil)
+                completionHandler(success: true, error: nil)
             }
         }
     }

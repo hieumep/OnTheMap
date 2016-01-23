@@ -18,20 +18,37 @@ class MapViewController : UIViewController, MKMapViewDelegate{
     
     @IBAction func logoutTouchUp(sender: AnyObject) {
         if FBSDKAccessToken.currentAccessToken() != nil {
-            let loginFB = FBSDKLoginManager()
-            loginFB.logOut()
+            removeFbData()
             self.dismissViewControllerAnimated(true, completion: nil)
         }else{
             DBClient.sharedInstance().logoutUdacity(self){(success,error) in
                 if success {
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }else{
-                    print(error)
+                    self.displayError(error)
                 }
             }
         }
     }
-        
+    
+    func removeFbData() {
+        //Remove FB Data
+        let fbManager = FBSDKLoginManager()
+        fbManager.logOut()
+        FBSDKAccessToken.setCurrentAccessToken(nil)
+    }
+    
+    func displayError(error: NSError?) {
+        dispatch_async(dispatch_get_main_queue(), {
+            let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .Default) { (action) -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            alertVC.addAction(dismissAction)
+            self.presentViewController(alertVC, animated: true, completion: nil)
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

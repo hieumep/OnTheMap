@@ -19,16 +19,21 @@ class DBClient : NSObject{
     func dataTaskWithRequest(request:NSMutableURLRequest, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
                /* 4. Make the request */
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
-            
+           
             /* GUARD: Was there an error? */
             guard (error == nil) else {
                 print("There was an error with your request: \(error)")
+                completionHandler(result: nil,error: error)
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
                 if let response = response as? NSHTTPURLResponse {
+                    if response.statusCode == 403 {
+                        let errorString = [NSLocalizedDescriptionKey:"Invalid Email or Passowrd"]
+                        completionHandler(result: nil, error:NSError(domain: "Connect sever", code: 403, userInfo: errorString))
+                    }
                     print("Your request returned an invalid response! Status code: \(response.statusCode)!")
                 } else if let response = response {
                     print("Your request returned an invalid response! Response: \(response)!")

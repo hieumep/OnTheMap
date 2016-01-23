@@ -32,19 +32,19 @@ class LoginViewController: UIViewController{
         infoUser[DBClient.JSONBody.Username] = textUserName.text
         infoUser[DBClient.JSONBody.Password] = textPassword.text
         
-        DBClient.sharedInstance().authenticateWithViewController(self,infoUser : infoUser) { (success, errorString) in
+        DBClient.sharedInstance().authenticateWithViewController(self,infoUser : infoUser) { (success, error) in
             if success {
                 
                 self.completeLogin()
             } else {
-                self.displayError(errorString)
+                self.displayError(error)
             }
-            print("\(errorString)")
+         
         }
     }
     
     @IBAction func loginWithFacebookTouchUp(sender: AnyObject) {
-        fbLoginInitiate()
+        facebookLogin()
     }
     
     func completeLogin() {
@@ -57,11 +57,14 @@ class LoginViewController: UIViewController{
     
 
     
-    func displayError(errorString: String?) {
+    func displayError(error: NSError?) {
         dispatch_async(dispatch_get_main_queue(), {
-            if let errorString = errorString {
-              print(errorString)
+           let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .Default) { (action) -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
+            alertVC.addAction(dismissAction)
+            self.presentViewController(alertVC, animated: true, completion: nil)
         })
     }
 
@@ -70,12 +73,12 @@ class LoginViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
-    func fbLoginInitiate() {
+    func facebookLogin() {
         let loginManager = FBSDKLoginManager()
         loginManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self){(result, error) -> Void in
             if (error != nil) {
                 // Process error
-                self.removeFbData()
+                self.displayError(error)
             } else if result.isCancelled {
                 // User Cancellation
                 self.removeFbData()
@@ -95,11 +98,11 @@ class LoginViewController: UIViewController{
     
     func loginWithAccessToken(){
         if let accessToken = FBSDKAccessToken.currentAccessToken()?.tokenString {
-            DBClient.sharedInstance().authenticateWithFacebook(self, accessToken: accessToken){(success, errorString) in
+            DBClient.sharedInstance().authenticateWithFacebook(self, accessToken: accessToken){(success, error) in
                 if success {
                     self.completeLogin()
                 } else {
-                    self.displayError(errorString)
+                    self.displayError(error)
                 }
             }
         }
