@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </mutableArray>
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Login View-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Login View" id="BYZ-38-t0r" customClass="LoginViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UdacityLogo" highlightedImage="UdacityLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ZRj-Tp-P2e">
+                                <rect key="frame" x="180" y="125" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="FvP-qL-Ex3"/>
+                                    <constraint firstAttribute="height" constant="128" id="cCd-Nr-83i"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BcA-Ch-ent">
+                                <rect key="frame" x="20" y="319" width="560" height="230"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acy-ZU-myF">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6a-1O-rcA">
+                                        <rect key="frame" x="0.0" y="40" width="560" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6F-ig-yqh">
+                                        <rect key="frame" x="0.0" y="80" width="560" height="36"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oB5-xe-jk2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzX-zP-eP8">
+                                        <rect key="frame" x="0.0" y="126" width="560" height="36"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                        <state key="normal" title="Don't have an account? Sign up">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yke-j2-sb8">
+                                        <rect key="frame" x="0.0" y="172" width="560" height="58"/>
+                                        <state key="normal" image="loginWithFacebook"/>
+                                        <connections>
+                                            <action selector="loginWithFacebookTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Baf-Iw-sve"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oy1-ad-8tF">
+                                <rect key="frame" x="208" y="246" width="184" height="30"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="BcA-Ch-ent" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="179-Yn-kfS"/>
+                            <constraint firstItem="ZRj-Tp-P2e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="105" id="3F4-ju-qvP"/>
+                            <constraint firstItem="BcA-Ch-ent" firstAttribute="top" secondItem="oy1-ad-8tF" secondAttribute="bottom" constant="43" id="BSO-da-jmw"/>
+                            <constraint firstItem="BcA-Ch-ent" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SFd-LG-18p"/>
+                            <constraint firstItem="oy1-ad-8tF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UrO-vf-Twi"/>
+                            <constraint firstItem="ZRj-Tp-P2e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="coK-fb-f5w"/>
+                            <constraint firstAttribute="trailing" secondItem="BcA-Ch-ent" secondAttribute="trailing" constant="20" id="g91-h4-CrX"/>
+                            <constraint firstItem="oy1-ad-8tF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="246" id="xx1-ka-def"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="Loginwithfacebook" destination="Yke-j2-sb8" id="u5X-fP-1vR"/>
+                        <outlet property="textPassword" destination="c6a-1O-rcA" id="i2E-80-N70"/>
+                        <outlet property="textUserName" destination="acy-ZU-myF" id="vRs-Eq-Ylj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="XBQ-ps-1PR">
+            <objects>
+                <tabBarController storyboardIdentifier="tabBarViewController" id="LZu-YS-8j9" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="GrR-Jq-AQl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="myq-Aw-ZWA" kind="relationship" relationship="viewControllers" id="6i8-ZT-QEl"/>
+                        <segue destination="ebi-vT-eQ1" kind="relationship" relationship="viewControllers" id="dJy-mK-Ztc"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2D-Pg-2Qg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="226"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="ZT5-G4-hHw">
+            <objects>
+                <tableViewController id="ePl-tX-ikN" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z2M-Aq-OGw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fb3-Jc-yc3">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fb3-Jc-yc3" id="4UF-a7-IP8">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ePl-tX-ikN" id="bgD-wz-X3Y"/>
+                            <outlet property="delegate" destination="ePl-tX-ikN" id="SvO-Yu-nSV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Phf-n6-pFe"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8fO-Zn-g3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2362" y="850"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="jZp-wf-102">
+            <objects>
+                <navigationController id="myq-Aw-ZWA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" id="FjV-eQ-Y1e"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="F3O-2y-Tmx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="LEW-Ut-lif" kind="relationship" relationship="rootViewController" id="x4F-dk-5wL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o2l-IN-wWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1752" y="90"/>
+        </scene>
+        <!--List-->
+        <scene sceneID="Zy2-BU-Qim">
+            <objects>
+                <navigationController id="ebi-vT-eQ1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="List" id="BBB-uP-CVN"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KrZ-dn-iVG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ePl-tX-ikN" kind="relationship" relationship="rootViewController" id="mzk-V3-GvT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dd8-hh-Ndq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1752" y="859"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Mo5-dn-Fgz">
+            <objects>
+                <viewController title="Map View Controller" id="LEW-Ut-lif" customClass="MapViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WTg-eo-bKg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hnp-fh-SLP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eEn-Qj-rA1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jBV-EB-KId">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <connections>
+                                    <outlet property="delegate" destination="LEW-Ut-lif" id="kag-0k-SZ4"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jBV-EB-KId" firstAttribute="top" secondItem="WTg-eo-bKg" secondAttribute="bottom" id="HEJ-yU-oNP"/>
+                            <constraint firstItem="jBV-EB-KId" firstAttribute="leading" secondItem="eEn-Qj-rA1" secondAttribute="leading" id="Jz0-Ka-6kP"/>
+                            <constraint firstItem="Hnp-fh-SLP" firstAttribute="top" secondItem="jBV-EB-KId" secondAttribute="bottom" id="PWI-DN-fh0"/>
+                            <constraint firstAttribute="trailing" secondItem="jBV-EB-KId" secondAttribute="trailing" id="vX7-hv-fzE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="On The Map" id="177-nu-JM2">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="zv5-WQ-zQh"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="jBV-EB-KId" id="YnZ-pv-6DC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="98d-X0-jRf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2381" y="90"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="UdacityLogo" width="256" height="256"/>
+        <image name="loginWithFacebook" width="298" height="58"/>
+    </resources>
+</document>

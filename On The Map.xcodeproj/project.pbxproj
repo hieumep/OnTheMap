@@ -7,20 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		518522B71C53573B00C7E514 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518522B61C53573B00C7E514 /* FBSDKCoreKit.framework */; };
+		518522B91C53574300C7E514 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518522B81C53574300C7E514 /* FBSDKLoginKit.framework */; };
+		518AF41E1C54028100157AAA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518AF41D1C54028100157AAA /* MapViewController.swift */; };
+		519128BD1C52FB8B004617AE /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519128BA1C52FB8B004617AE /* Roboto-Medium.ttf */; };
+		519128BE1C52FB8B004617AE /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519128BB1C52FB8B004617AE /* Roboto-Regular.ttf */; };
+		519128BF1C52FB8B004617AE /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519128BC1C52FB8B004617AE /* Roboto-Thin.ttf */; };
+		519128C21C530236004617AE /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519128C11C530236004617AE /* TextFieldDelegate.swift */; };
+		519128C51C530776004617AE /* DBConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519128C41C530776004617AE /* DBConstant.swift */; };
+		519128C71C53079C004617AE /* DBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519128C61C53079C004617AE /* DBClient.swift */; };
+		519128C91C531101004617AE /* DBConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519128C81C531101004617AE /* DBConvenience.swift */; };
 		51C146711C52F46100CA75E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C146701C52F46100CA75E6 /* AppDelegate.swift */; };
-		51C146731C52F46100CA75E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C146721C52F46100CA75E6 /* ViewController.swift */; };
+		51C146731C52F46100CA75E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C146721C52F46100CA75E6 /* LoginViewController.swift */; };
 		51C146761C52F46100CA75E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51C146741C52F46100CA75E6 /* Main.storyboard */; };
-		51C146791C52F46100CA75E6 /* On_The_Map.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51C146771C52F46100CA75E6 /* On_The_Map.xcdatamodeld */; };
 		51C1467B1C52F46100CA75E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51C1467A1C52F46100CA75E6 /* Assets.xcassets */; };
 		51C1467E1C52F46100CA75E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51C1467C1C52F46100CA75E6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		518522B61C53573B00C7E514 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		518522B81C53574300C7E514 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		518522BA1C5358B600C7E514 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		518AF41D1C54028100157AAA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		519128BA1C52FB8B004617AE /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		519128BB1C52FB8B004617AE /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		519128BC1C52FB8B004617AE /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		519128C11C530236004617AE /* TextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
+		519128C41C530776004617AE /* DBConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBConstant.swift; sourceTree = "<group>"; };
+		519128C61C53079C004617AE /* DBClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBClient.swift; sourceTree = "<group>"; };
+		519128C81C531101004617AE /* DBConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBConvenience.swift; sourceTree = "<group>"; };
 		51C1466D1C52F46100CA75E6 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51C146701C52F46100CA75E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		51C146721C52F46100CA75E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		51C146721C52F46100CA75E6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		51C146751C52F46100CA75E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		51C146781C52F46100CA75E6 /* On_The_Map.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = On_The_Map.xcdatamodel; sourceTree = "<group>"; };
 		51C1467A1C52F46100CA75E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51C1467D1C52F46100CA75E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51C1467F1C52F46100CA75E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,15 +50,68 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				518522B91C53574300C7E514 /* FBSDKLoginKit.framework in Frameworks */,
+				518522B71C53573B00C7E514 /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		518522B31C5350E300C7E514 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				518522B81C53574300C7E514 /* FBSDKLoginKit.framework */,
+				518522B61C53573B00C7E514 /* FBSDKCoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		519128B91C52FAE5004617AE /* SupportFont */ = {
+			isa = PBXGroup;
+			children = (
+				519128BA1C52FB8B004617AE /* Roboto-Medium.ttf */,
+				519128BB1C52FB8B004617AE /* Roboto-Regular.ttf */,
+				519128BC1C52FB8B004617AE /* Roboto-Thin.ttf */,
+			);
+			name = SupportFont;
+			path = OnTheMap;
+			sourceTree = "<group>";
+		};
+		519128C01C5301F8004617AE /* ControllerDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				519128C11C530236004617AE /* TextFieldDelegate.swift */,
+			);
+			name = ControllerDelegate;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		519128C31C530705004617AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				519128C41C530776004617AE /* DBConstant.swift */,
+				519128C61C53079C004617AE /* DBClient.swift */,
+				519128C81C531101004617AE /* DBConvenience.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		519128CA1C533D4C004617AE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				51C146721C52F46100CA75E6 /* LoginViewController.swift */,
+				518AF41D1C54028100157AAA /* MapViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		51C146641C52F46100CA75E6 = {
 			isa = PBXGroup;
 			children = (
+				518522BA1C5358B600C7E514 /* Bridging-Header.h */,
+				518522B31C5350E300C7E514 /* Frameworks */,
+				519128B91C52FAE5004617AE /* SupportFont */,
 				51C1466F1C52F46100CA75E6 /* On The Map */,
 				51C1466E1C52F46100CA75E6 /* Products */,
 			);
@@ -56,15 +128,17 @@
 		51C1466F1C52F46100CA75E6 /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
+				519128CA1C533D4C004617AE /* Controller */,
+				519128C31C530705004617AE /* Model */,
+				519128C01C5301F8004617AE /* ControllerDelegate */,
 				51C146701C52F46100CA75E6 /* AppDelegate.swift */,
-				51C146721C52F46100CA75E6 /* ViewController.swift */,
 				51C146741C52F46100CA75E6 /* Main.storyboard */,
 				51C1467A1C52F46100CA75E6 /* Assets.xcassets */,
 				51C1467C1C52F46100CA75E6 /* LaunchScreen.storyboard */,
 				51C1467F1C52F46100CA75E6 /* Info.plist */,
-				51C146771C52F46100CA75E6 /* On_The_Map.xcdatamodeld */,
 			);
-			path = "On The Map";
+			name = "On The Map";
+			path = OnTheMap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +199,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				519128BD1C52FB8B004617AE /* Roboto-Medium.ttf in Resources */,
 				51C1467E1C52F46100CA75E6 /* LaunchScreen.storyboard in Resources */,
+				519128BF1C52FB8B004617AE /* Roboto-Thin.ttf in Resources */,
+				519128BE1C52FB8B004617AE /* Roboto-Regular.ttf in Resources */,
 				51C1467B1C52F46100CA75E6 /* Assets.xcassets in Resources */,
 				51C146761C52F46100CA75E6 /* Main.storyboard in Resources */,
 			);
@@ -138,9 +215,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51C146731C52F46100CA75E6 /* ViewController.swift in Sources */,
-				51C146791C52F46100CA75E6 /* On_The_Map.xcdatamodeld in Sources */,
+				51C146731C52F46100CA75E6 /* LoginViewController.swift in Sources */,
+				519128C71C53079C004617AE /* DBClient.swift in Sources */,
 				51C146711C52F46100CA75E6 /* AppDelegate.swift in Sources */,
+				519128C91C531101004617AE /* DBConvenience.swift in Sources */,
+				519128C21C530236004617AE /* TextFieldDelegate.swift in Sources */,
+				519128C51C530776004617AE /* DBConstant.swift in Sources */,
+				518AF41E1C54028100157AAA /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,10 +332,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "On The Map/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/OnTheMap/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ronald.On-The-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-header.h";
 			};
 			name = Debug;
 		};
@@ -262,10 +348,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "On The Map/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/OnTheMap/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ronald.On-The-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-header.h";
 			};
 			name = Release;
 		};
@@ -288,21 +379,9 @@
 				51C146841C52F46100CA75E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		51C146771C52F46100CA75E6 /* On_The_Map.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				51C146781C52F46100CA75E6 /* On_The_Map.xcdatamodel */,
-			);
-			currentVersion = 51C146781C52F46100CA75E6 /* On_The_Map.xcdatamodel */;
-			path = On_The_Map.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 51C146651C52F46100CA75E6 /* Project object */;
 }
