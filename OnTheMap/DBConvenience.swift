@@ -38,7 +38,8 @@ extension DBClient{
     
     //get userId via login Udacity
     func getSessionUdacity(infoUser:[String:String],completionHandler : (success : Bool, error : String?) -> Void){
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
+        let urlString  = DBClient.Constants.baseURL + DBClient.Methods.session
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -64,13 +65,12 @@ extension DBClient{
     
     //get userID via login facebook
     func getUserIDViaFacebookLogin(accessToken : String!, completionHandler : (success:Bool, error:String?) -> Void){
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
+        let urlString  = DBClient.Constants.baseURL + DBClient.Methods.session
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        //  let httpBody = "{\"\(DBClient.JSONBody.Udacity)\": {\"\(DBClient.JSONBody.Username)\": \"\(infoUser[DBClient.JSONBody.Username]!)\", \"\(DBClient.JSONBody.Password)\": \"\(infoUser[DBClient.JSONBody.Password]!)\"}}"
         request.HTTPBody = "{\"facebook_mobile\": {\"access_token\": \"\(accessToken)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
-        //request.HTTPBody = httpBody.dataUsingEncoding(NSUTF8StringEncoding)
         self.dataTaskWithRequest(request){(JSONResult, error) in
             if let error = error {
                 print(error)
@@ -84,6 +84,27 @@ extension DBClient{
                     self.userID = userID
                     completionHandler(success: true, error: nil)
                 }
+            }
+        }
+    }
+    
+    func logoutUdacity(hostViewController : UIViewController, completionHandler : (success:Bool, errorString : String?) -> Void){
+        let urlString  = DBClient.Constants.baseURL + DBClient.Methods.session
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        self.dataTaskWithRequest(request){(JSONResult, error) in
+            if let error = error {
+                print(error)
+                completionHandler(success: false, errorString: "Can't log out")
+            }else{
+                completionHandler(success: true, errorString: nil)
             }
         }
     }

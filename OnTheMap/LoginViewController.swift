@@ -94,7 +94,7 @@ class LoginViewController: UIViewController{
     }
     
     func loginWithAccessToken(){
-        if let accessToken = FBSDKAccessToken.currentAccessToken().tokenString {
+        if let accessToken = FBSDKAccessToken.currentAccessToken()?.tokenString {
             DBClient.sharedInstance().authenticateWithFacebook(self, accessToken: accessToken){(success, errorString) in
                 if success {
                     self.completeLogin()

@@ -16,6 +16,22 @@ class MapViewController : UIViewController, MKMapViewDelegate{
         
     }
     
+    @IBAction func logoutTouchUp(sender: AnyObject) {
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            let loginFB = FBSDKLoginManager()
+            loginFB.logOut()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }else{
+            DBClient.sharedInstance().logoutUdacity(self){(success,error) in
+                if success {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }else{
+                    print(error)
+                }
+            }
+        }
+    }
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

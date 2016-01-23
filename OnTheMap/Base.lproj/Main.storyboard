@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Medium.ttf">
@@ -147,11 +148,11 @@
             </objects>
             <point key="canvasLocation" x="2362" y="850"/>
         </scene>
-        <!--Map-->
+        <!--Map Navigation Controller-->
         <scene sceneID="jZp-wf-102">
             <objects>
-                <navigationController id="myq-Aw-ZWA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="FjV-eQ-Y1e"/>
+                <navigationController title="Map Navigation Controller" id="myq-Aw-ZWA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="map" id="FjV-eQ-Y1e"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F3O-2y-Tmx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -164,11 +165,11 @@
             </objects>
             <point key="canvasLocation" x="1752" y="90"/>
         </scene>
-        <!--List-->
+        <!--List Navigation Controller-->
         <scene sceneID="Zy2-BU-Qim">
             <objects>
-                <navigationController id="ebi-vT-eQ1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="BBB-uP-CVN"/>
+                <navigationController title="List Navigation Controller" id="ebi-vT-eQ1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="list" id="BBB-uP-CVN"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KrZ-dn-iVG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -209,7 +210,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="177-nu-JM2">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="zv5-WQ-zQh"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="zv5-WQ-zQh">
+                            <connections>
+                                <action selector="logoutTouchUp:" destination="LEW-Ut-lif" id="pBS-if-aHJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="vxe-3z-gc2"/>
+                            <barButtonItem image="Pin" id="qbJ-ub-VtZ"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="jBV-EB-KId" id="YnZ-pv-6DC"/>
@@ -221,7 +230,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Pin" width="32" height="32"/>
         <image name="UdacityLogo" width="256" height="256"/>
+        <image name="list" width="32" height="32"/>
         <image name="loginWithFacebook" width="298" height="58"/>
+        <image name="map" width="32" height="32"/>
     </resources>
 </document>
