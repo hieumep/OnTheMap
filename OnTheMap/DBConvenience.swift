@@ -46,7 +46,7 @@ extension DBClient{
         let httpBody = "{\"\(DBClient.JSONBody.Udacity)\": {\"\(DBClient.JSONBody.Username)\": \"\(infoUser[DBClient.JSONBody.Username]!)\", \"\(DBClient.JSONBody.Password)\": \"\(infoUser[DBClient.JSONBody.Password]!)\"}}"
       //  request.HTTPBody = "{\"udacity\": {\"username\": \"voquanghieu@gmail.com\", \"password\": \"vqhieu1984\"}}".dataUsingEncoding(NSUTF8StringEncoding)
         request.HTTPBody = httpBody.dataUsingEncoding(NSUTF8StringEncoding)
-        self.dataTaskWithRequest(request){(JSONResult, error) in
+        self.dataTaskWithRequest(request,subSetData: true){(JSONResult, error) in
             if let error = error {
                 print(error.localizedDescription)
                 completionHandler(success: false, error: error)
@@ -71,7 +71,7 @@ extension DBClient{
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = "{\"facebook_mobile\": {\"access_token\": \"\(accessToken)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
-        self.dataTaskWithRequest(request){(JSONResult, error) in
+        self.dataTaskWithRequest(request,subSetData: true){(JSONResult, error) in
             if let error = error {
                 print(error.localizedDescription)
                 completionHandler(success: false, error: error)
@@ -99,7 +99,7 @@ extension DBClient{
         if let xsrfCookie = xsrfCookie {
             request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
         }
-        self.dataTaskWithRequest(request){(JSONResult, error) in
+        self.dataTaskWithRequest(request,subSetData: true){(JSONResult, error) in
             if let error = error {
                 print(error)
                 completionHandler(success: false,error: error)

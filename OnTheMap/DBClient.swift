@@ -16,7 +16,7 @@ class DBClient : NSObject{
         super.init()
     }    
     
-    func dataTaskWithRequest(request:NSMutableURLRequest, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func dataTaskWithRequest(request:NSMutableURLRequest, subSetData:Bool, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
                /* 4. Make the request */
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
            
@@ -48,8 +48,14 @@ class DBClient : NSObject{
                 print("No data was returned by the request!")
                 return
             }
-            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */            /* 5/6. Parse the data and use the data (happens in completion handler) */
-            DBClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
+            if subSetData {
+                let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+                DBClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
+            }else {
+                DBClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            }
+            
+            
         }
         
         /* 7. Start the request */

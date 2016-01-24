@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		517CBF021C543F0B007544BB /* SLOConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517CBF011C543F0B007544BB /* SLOConvenience.swift */; };
+		517CBF041C5441CB007544BB /* DBStudentObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517CBF031C5441CB007544BB /* DBStudentObject.swift */; };
 		518522B71C53573B00C7E514 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518522B61C53573B00C7E514 /* FBSDKCoreKit.framework */; };
 		518522B91C53574300C7E514 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518522B81C53574300C7E514 /* FBSDKLoginKit.framework */; };
 		518AF41E1C54028100157AAA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518AF41D1C54028100157AAA /* MapViewController.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		517CBF011C543F0B007544BB /* SLOConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLOConvenience.swift; sourceTree = "<group>"; };
+		517CBF031C5441CB007544BB /* DBStudentObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBStudentObject.swift; sourceTree = "<group>"; };
 		518522B61C53573B00C7E514 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		518522B81C53574300C7E514 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		518522BA1C5358B600C7E514 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 				519128C41C530776004617AE /* DBConstant.swift */,
 				519128C61C53079C004617AE /* DBClient.swift */,
 				519128C81C531101004617AE /* DBConvenience.swift */,
+				517CBF011C543F0B007544BB /* SLOConvenience.swift */,
+				517CBF031C5441CB007544BB /* DBStudentObject.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -217,7 +223,9 @@
 			files = (
 				51C146731C52F46100CA75E6 /* LoginViewController.swift in Sources */,
 				519128C71C53079C004617AE /* DBClient.swift in Sources */,
+				517CBF021C543F0B007544BB /* SLOConvenience.swift in Sources */,
 				51C146711C52F46100CA75E6 /* AppDelegate.swift in Sources */,
+				517CBF041C5441CB007544BB /* DBStudentObject.swift in Sources */,
 				519128C91C531101004617AE /* DBConvenience.swift in Sources */,
 				519128C21C530236004617AE /* TextFieldDelegate.swift in Sources */,
 				519128C51C530776004617AE /* DBConstant.swift in Sources */,

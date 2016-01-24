@@ -21,6 +21,7 @@ class LoginViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         textUserName.delegate = textFieldDelegate
+        textPassword.secureTextEntry = true
         textPassword.delegate = textFieldDelegate
         session = NSURLSession.sharedSession()
         loginWithAccessToken()
