@@ -8,9 +8,16 @@
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
+            <string>Roboto-Medium</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+        </mutableArray>
+        <mutableArray key="Roboto-Thin.ttf">
+            <string>Roboto-Thin</string>
+            <string>Roboto-Thin</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -183,7 +190,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="nM2-tf-nki"/>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="LHc-5R-pY1"/>
-                            <barButtonItem image="Pin" id="gaV-FQ-P87"/>
+                            <barButtonItem image="Pin" id="gaV-FQ-P87">
+                                <connections>
+                                    <segue destination="msU-2o-rNy" kind="showDetail" identifier="postingViewSegue" action="showViewController:sender:" id="FZJ-tF-0M3"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -264,7 +275,11 @@
                                     <action selector="ReloadPinOnTheMap:" destination="LEW-Ut-lif" id="86j-qW-WRk"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="Pin" id="qbJ-ub-VtZ"/>
+                            <barButtonItem image="Pin" id="qbJ-ub-VtZ">
+                                <connections>
+                                    <segue destination="msU-2o-rNy" kind="showDetail" identifier="postingViewSegue" action="showViewController:sender:" id="CaB-k9-SUB"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -275,6 +290,119 @@
             </objects>
             <point key="canvasLocation" x="2381" y="90"/>
         </scene>
+        <!--Information Posting View-->
+        <scene sceneID="pzA-Kg-XwJ">
+            <objects>
+                <viewController title="Information Posting View" id="msU-2o-rNy" customClass="InformationPostingViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J6e-VR-2JO"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cvw-d6-fpY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0qV-va-3gU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6T-V8-wvf">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3C5-21-NbE"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="fpb-YZ-Df1">
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="STg-3q-46p"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNI-x2-Pe6">
+                                <rect key="frame" x="0.0" y="474" width="600" height="82"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rk-xn-cIb">
+                                        <rect key="frame" x="228" y="23" width="145" height="36"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                        <state key="normal" title="Find on the Map">
+                                            <color key="titleColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="948-VI-OLp"/>
+                                    <constraint firstItem="6rk-xn-cIb" firstAttribute="centerX" secondItem="TNI-x2-Pe6" secondAttribute="centerX" id="pLy-eP-h4D"/>
+                                    <constraint firstItem="6rk-xn-cIb" firstAttribute="centerY" secondItem="TNI-x2-Pe6" secondAttribute="centerY" id="yhY-4D-3Sy"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hui-8T-lek">
+                                <rect key="frame" x="0.0" y="64" width="600" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="studying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWs-nx-XyT">
+                                        <rect key="frame" x="242" y="57" width="117" height="36"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="30"/>
+                                        <color key="textColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcP-gn-KsQ">
+                                        <rect key="frame" x="265" y="96" width="71" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="no6-Yw-fb1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="25"/>
+                                        <color key="textColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJh-bs-1po">
+                                        <rect key="frame" x="223" y="15" width="155" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="eTM-yM-YNi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="25"/>
+                                        <color key="textColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="FJh-bs-1po" firstAttribute="centerX" secondItem="hui-8T-lek" secondAttribute="centerX" id="0Ca-rB-wUY"/>
+                                    <constraint firstItem="FJh-bs-1po" firstAttribute="top" secondItem="hui-8T-lek" secondAttribute="top" constant="15" id="8bW-LQ-g6v"/>
+                                    <constraint firstAttribute="height" constant="150" id="GK3-aS-XhV"/>
+                                    <constraint firstItem="tWs-nx-XyT" firstAttribute="centerY" secondItem="hui-8T-lek" secondAttribute="centerY" id="JH6-eW-wdn"/>
+                                    <constraint firstItem="kcP-gn-KsQ" firstAttribute="centerX" secondItem="hui-8T-lek" secondAttribute="centerX" id="Q9k-VH-M6A"/>
+                                    <constraint firstItem="tWs-nx-XyT" firstAttribute="centerX" secondItem="hui-8T-lek" secondAttribute="centerX" id="QFD-8y-8s2"/>
+                                    <constraint firstAttribute="bottom" secondItem="kcP-gn-KsQ" secondAttribute="bottom" constant="24" id="tbs-gC-ABr"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ITH-u0-2F5">
+                                <rect key="frame" x="0.0" y="211" width="600" height="265"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Cvw-d6-fpY" firstAttribute="top" secondItem="TNI-x2-Pe6" secondAttribute="bottom" id="13S-dx-FxC"/>
+                            <constraint firstAttribute="trailing" secondItem="K6T-V8-wvf" secondAttribute="trailing" id="6HF-tc-iEg"/>
+                            <constraint firstItem="ITH-u0-2F5" firstAttribute="leading" secondItem="0qV-va-3gU" secondAttribute="leading" id="7Yh-6h-Ort"/>
+                            <constraint firstItem="hui-8T-lek" firstAttribute="top" secondItem="K6T-V8-wvf" secondAttribute="bottom" id="8NJ-VA-n12"/>
+                            <constraint firstItem="TNI-x2-Pe6" firstAttribute="leading" secondItem="0qV-va-3gU" secondAttribute="leading" id="Co2-jT-FlO"/>
+                            <constraint firstItem="ITH-u0-2F5" firstAttribute="top" secondItem="K6T-V8-wvf" secondAttribute="bottom" constant="147" id="ELm-qY-sTZ"/>
+                            <constraint firstAttribute="trailing" secondItem="TNI-x2-Pe6" secondAttribute="trailing" id="NuH-xa-Xfz"/>
+                            <constraint firstItem="K6T-V8-wvf" firstAttribute="top" secondItem="J6e-VR-2JO" secondAttribute="bottom" id="OmL-La-WhC"/>
+                            <constraint firstAttribute="trailing" secondItem="hui-8T-lek" secondAttribute="trailing" id="XAS-Vt-paW"/>
+                            <constraint firstItem="Cvw-d6-fpY" firstAttribute="top" secondItem="ITH-u0-2F5" secondAttribute="bottom" constant="80" id="XFA-If-dUZ"/>
+                            <constraint firstAttribute="trailing" secondItem="ITH-u0-2F5" secondAttribute="trailing" id="aeq-vx-Kcj"/>
+                            <constraint firstItem="K6T-V8-wvf" firstAttribute="leading" secondItem="0qV-va-3gU" secondAttribute="leading" id="ass-Ak-Qts"/>
+                            <constraint firstItem="hui-8T-lek" firstAttribute="leading" secondItem="0qV-va-3gU" secondAttribute="leading" id="zJ6-sn-tdg"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8DU-9P-Ctl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3019" y="90"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Pin" width="32" height="32"/>
@@ -283,4 +411,7 @@
         <image name="loginWithFacebook" width="298" height="58"/>
         <image name="map" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="CaB-k9-SUB"/>
+    </inferredMetricsTieBreakers>
 </document>
