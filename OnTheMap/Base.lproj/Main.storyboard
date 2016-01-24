@@ -119,22 +119,59 @@
             </objects>
             <point key="canvasLocation" x="1078" y="226"/>
         </scene>
-        <!--Table View Controller-->
+        <!--On The Map-->
         <scene sceneID="ZT5-G4-hHw">
             <objects>
-                <tableViewController id="ePl-tX-ikN" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z2M-Aq-OGw">
+                <tableViewController id="ePl-tX-ikN" customClass="ListStudentsViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z2M-Aq-OGw">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fb3-Jc-yc3">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentCell" rowHeight="60" id="Fb3-Jc-yc3" customClass="ListStudentViewcell" customModule="On_The_Map" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fb3-Jc-yc3" id="4UF-a7-IP8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mng-ON-uUk">
+                                            <rect key="frame" x="15" y="10" width="34" height="39"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMZ-E5-Xgv">
+                                            <rect key="frame" x="95" y="8" width="490" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mediaURL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptm-Y0-Dhe">
+                                            <rect key="frame" x="95" y="31" width="490" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="BC4-Cb-VGT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="ptm-Y0-Dhe" secondAttribute="trailing" constant="15" id="5VC-QZ-2Vq"/>
+                                        <constraint firstItem="ptm-Y0-Dhe" firstAttribute="leading" secondItem="4UF-a7-IP8" secondAttribute="leading" constant="95" id="Jxc-iL-mNV"/>
+                                        <constraint firstAttribute="bottom" secondItem="Mng-ON-uUk" secondAttribute="bottom" constant="10" id="Np0-iL-Hr0"/>
+                                        <constraint firstItem="ptm-Y0-Dhe" firstAttribute="top" secondItem="pMZ-E5-Xgv" secondAttribute="bottom" constant="2" id="VbG-To-h4k"/>
+                                        <constraint firstItem="pMZ-E5-Xgv" firstAttribute="top" secondItem="4UF-a7-IP8" secondAttribute="top" constant="8" id="XrL-yD-iIy"/>
+                                        <constraint firstItem="pMZ-E5-Xgv" firstAttribute="leading" secondItem="4UF-a7-IP8" secondAttribute="leading" constant="95" id="dOd-vI-Tez"/>
+                                        <constraint firstAttribute="trailing" secondItem="pMZ-E5-Xgv" secondAttribute="trailing" constant="15" id="f33-PO-prR"/>
+                                        <constraint firstAttribute="bottom" secondItem="ptm-Y0-Dhe" secondAttribute="bottom" constant="8" id="ius-OD-XIc"/>
+                                        <constraint firstItem="Mng-ON-uUk" firstAttribute="leading" secondItem="4UF-a7-IP8" secondAttribute="leading" constant="15" id="ux2-fP-4Ht"/>
+                                        <constraint firstItem="Mng-ON-uUk" firstAttribute="top" secondItem="4UF-a7-IP8" secondAttribute="top" constant="10" id="y6i-KX-cht"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mediaURLLabel" destination="ptm-Y0-Dhe" id="aMx-w8-ZAb"/>
+                                    <outlet property="nameLabel" destination="pMZ-E5-Xgv" id="dgh-ip-RZH"/>
+                                    <outlet property="pinImage" destination="Mng-ON-uUk" id="P0D-lx-KwJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -142,7 +179,16 @@
                             <outlet property="delegate" destination="ePl-tX-ikN" id="SvO-Yu-nSV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Phf-n6-pFe"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="Phf-n6-pFe">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="nM2-tf-nki"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="LHc-5R-pY1"/>
+                            <barButtonItem image="Pin" id="gaV-FQ-P87"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="studentTableView" destination="Z2M-Aq-OGw" id="P8w-TS-8Bk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fO-Zn-g3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -196,9 +242,6 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jBV-EB-KId">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <connections>
-                                    <outlet property="delegate" destination="LEW-Ut-lif" id="kag-0k-SZ4"/>
-                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -216,7 +259,11 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="vxe-3z-gc2"/>
+                            <barButtonItem systemItem="refresh" id="vxe-3z-gc2">
+                                <connections>
+                                    <action selector="ReloadPinOnTheMap:" destination="LEW-Ut-lif" id="86j-qW-WRk"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="Pin" id="qbJ-ub-VtZ"/>
                         </rightBarButtonItems>
                     </navigationItem>

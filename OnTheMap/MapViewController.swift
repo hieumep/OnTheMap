@@ -9,10 +9,19 @@
 import Foundation
 import MapKit
 
-class MapViewController : UIViewController, MKMapViewDelegate{
+class MapViewController : UIViewController{
+    
     @IBOutlet weak var mapView: MKMapView!
-   var studentObjects = [StudentObject]()
+    
+    var studentObjects = [StudentObject]()
+    var mapViewDelegate = MapViewDelegate()
+    
     override func viewDidLoad() {
+        mapView.delegate = mapViewDelegate
+        loadPinOnMap()
+    }
+    
+    @IBAction func ReloadPinOnTheMap(sender: AnyObject) {
         loadPinOnMap()
     }
     
@@ -61,10 +70,6 @@ class MapViewController : UIViewController, MKMapViewDelegate{
                 dispatch_async(dispatch_get_main_queue()){
                     var annotations = [MKPointAnnotation]()
                     
-                    // The "locations" array is loaded with the sample data below. We are using the dictionaries
-                    // to create map annotations. This would be more stylish if the dictionaries were being
-                    // used to create custom structs. Perhaps StudentLocation structs.
-                    
                     for studentObject in self.studentObjects {
                         
                         // Notice that the float values are being used to create CLLocationDegree values.
@@ -98,25 +103,6 @@ class MapViewController : UIViewController, MKMapViewDelegate{
         }
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        let reuseId = "pin"
-        
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
-        
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = true
-            pinView!.pinTintColor = UIColor.redColor()
-            pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
-        }
-        else {
-            pinView!.annotation = annotation
-        }
-        
-        return pinView
-    }
-    
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()
@@ -126,4 +112,5 @@ class MapViewController : UIViewController, MKMapViewDelegate{
         }
     }
 
+    
 }
