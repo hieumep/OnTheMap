@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SystemConfiguration
 
 class LoginViewController: UIViewController{
 
@@ -29,18 +30,24 @@ class LoginViewController: UIViewController{
     
     @IBAction func loginTouchUp(sender: AnyObject) {
         var infoUser = [String:String]()
-        
-        infoUser[DBClient.JSONBody.Username] = textUserName.text
-        infoUser[DBClient.JSONBody.Password] = textPassword.text
-        
-        DBClient.sharedInstance().authenticateWithViewController(self,infoUser : infoUser) { (success, error) in
-            if success {
-                
-                self.completeLogin()
-            } else {
-                self.displayError(error)
+        if (self.textUserName.text!.isEmpty) || (self.textPassword.text!.isEmpty){
+            let error = NSError(domain: "Text is Empty", code: 4, userInfo: [NSLocalizedDescriptionKey:"UserName/Password is empty"])
+            displayError(error)
+        }else{
+            let checkNetwork = connectedToNetwork()
+            if checkNetwork.network{
+                infoUser[DBClient.JSONBody.Username] = textUserName.text
+                infoUser[DBClient.JSONBody.Password] = textPassword.text
+                DBClient.sharedInstance().authenticateWithViewController(self,infoUser : infoUser) { (success, error) in
+                    if success {
+                        self.completeLogin()
+                    } else {
+                        self.displayError(error)
+                    }
+                }
+            }else{
+                displayError(checkNetwork.error)
             }
-         
         }
     }
     
@@ -52,7 +59,6 @@ class LoginViewController: UIViewController{
         dispatch_async(dispatch_get_main_queue(), {
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarViewController") as! UITabBarController
             self.presentViewController(controller, animated: true, completion: nil)
-            print("success")
         })
     }
     
@@ -75,18 +81,23 @@ class LoginViewController: UIViewController{
     }
     
     func facebookLogin() {
-        let loginManager = FBSDKLoginManager()
-        loginManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self){(result, error) -> Void in
-            if (error != nil) {
-                // Process error
-                self.displayError(error)
-            } else if result.isCancelled {
-                // User Cancellation
-                self.removeFbData()
-            } else {
-                //Success
-                self.loginWithAccessToken()
+        let checkNetwork = connectedToNetwork()
+        if checkNetwork.network{
+            let loginManager = FBSDKLoginManager()
+            loginManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self){(result, error) -> Void in
+                if (error != nil) {
+                    // Process error
+                    self.displayError(error)
+                } else if result.isCancelled {
+                    // User Cancellation
+                    self.removeFbData()
+                } else {
+                    //Success
+                    self.loginWithAccessToken()
+                }
             }
+        }else{
+            displayError(checkNetwork.error)
         }
     }
     
@@ -106,6 +117,32 @@ class LoginViewController: UIViewController{
                     self.displayError(error)
                 }
             }
+        }
+    }
+    
+    func connectedToNetwork() -> (network:Bool,error : NSError?) {
+        let error = NSError(domain: "Network connection", code: 6, userInfo: [NSLocalizedDescriptionKey:"No network connection"])
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(&zeroAddress, {
+            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+        }) else {
+            return (false,error : error)
+        }
+        
+        var flags : SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return (false,error : error)
+        }
+        
+        let isReachable = flags.contains(.Reachable)
+        let needsConnection = flags.contains(.ConnectionRequired)
+        if (isReachable && !needsConnection) {
+            return (network:true, error : nil)
+        }else{
+            return (false,error : error)
         }
     }
 }
