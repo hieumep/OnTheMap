@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 
 class DBClient : NSObject{
+    
     var session : NSURLSession
-    var userID :String? = nil
+    var myInfo = StudentObject()
+    
     override init() {
         session = NSURLSession.sharedSession()
-        super.init()
     }    
     
     func dataTaskWithRequest(request:NSMutableURLRequest, subSetData:Bool, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {

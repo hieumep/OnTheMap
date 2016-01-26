@@ -13,7 +13,7 @@ extension DBClient{
     
     struct Methods{
         static let session = "session"
-        static let userData = "users/{id}"
+        static let userData = "users/"
         static let studentMethods = "https://api.parse.com/1/classes/StudentLocation"
     }
     
@@ -45,5 +45,9 @@ extension DBClient{
         static let Account = "account"
         static let userID = "key"
         static let results = "results"
+        static let firstName = "first_name"
+        static let lastName = "last_name"
+        static let objectId = "objectId"
+        static let user = "user"
     }
 }

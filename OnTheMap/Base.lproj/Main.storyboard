@@ -9,8 +9,10 @@
         <mutableArray key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
             <string>Roboto-Medium</string>
+            <string>Roboto-Medium</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -323,6 +325,9 @@
                                         <state key="normal" title="Find on the Map">
                                             <color key="titleColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="findOnTheMapTouchUp:" destination="msU-2o-rNy" eventType="touchUpInside" id="loy-Z6-bcj"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -332,6 +337,13 @@
                                     <constraint firstItem="6rk-xn-cIb" firstAttribute="centerY" secondItem="TNI-x2-Pe6" secondAttribute="centerY" id="yhY-4D-3Sy"/>
                                 </constraints>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ITH-u0-2F5">
+                                <rect key="frame" x="0.0" y="211" width="600" height="265"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hui-8T-lek">
                                 <rect key="frame" x="0.0" y="64" width="600" height="150"/>
                                 <subviews>
@@ -371,13 +383,6 @@
                                     <constraint firstAttribute="bottom" secondItem="kcP-gn-KsQ" secondAttribute="bottom" constant="24" id="tbs-gC-ABr"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ITH-u0-2F5">
-                                <rect key="frame" x="0.0" y="211" width="600" height="265"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -398,10 +403,91 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="locationText" destination="ITH-u0-2F5" id="yf5-WP-HQF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8DU-9P-Ctl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3019" y="90"/>
+        </scene>
+        <!--Detail Location View Controller-->
+        <scene sceneID="baO-1V-At8">
+            <objects>
+                <viewController storyboardIdentifier="DetaiLocationViewController" id="UdT-qy-0Eh" customClass="DetailLocationViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8lT-88-0xf"/>
+                        <viewControllerLayoutGuide type="bottom" id="jW1-vu-gtt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yiG-4W-oZc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMb-vK-5uJ">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Mcp-li-CVy"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="dIb-Zx-P4o">
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="8Nn-bb-su1">
+                                            <connections>
+                                                <action selector="cancelTouchUp:" destination="UdT-qy-0Eh" id="wm1-I1-5mh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TvK-fU-VyT">
+                                <rect key="frame" x="0.0" y="64" width="600" height="150"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="rxg-eX-aqO"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TSV-hC-ayP">
+                                <rect key="frame" x="0.0" y="213" width="600" height="387"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4te-sU-u1A">
+                                <rect key="frame" x="268" y="544" width="65" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Qnq-bf-5wt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitTouchUp:" destination="UdT-qy-0Eh" eventType="touchUpInside" id="VMO-9c-sHn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TvK-fU-VyT" secondAttribute="trailing" id="1fv-l9-KYB"/>
+                            <constraint firstItem="4te-sU-u1A" firstAttribute="centerX" secondItem="yiG-4W-oZc" secondAttribute="centerX" id="3Tj-14-riK"/>
+                            <constraint firstItem="TvK-fU-VyT" firstAttribute="top" secondItem="VMb-vK-5uJ" secondAttribute="bottom" id="7V7-SM-Bfd"/>
+                            <constraint firstItem="TSV-hC-ayP" firstAttribute="top" secondItem="VMb-vK-5uJ" secondAttribute="bottom" constant="149" id="Rpc-cc-DWv"/>
+                            <constraint firstAttribute="trailing" secondItem="TSV-hC-ayP" secondAttribute="trailing" id="TNt-nK-Wd3"/>
+                            <constraint firstItem="VMb-vK-5uJ" firstAttribute="leading" secondItem="yiG-4W-oZc" secondAttribute="leading" id="Tg3-FZ-ekM"/>
+                            <constraint firstItem="jW1-vu-gtt" firstAttribute="top" secondItem="4te-sU-u1A" secondAttribute="bottom" constant="20" id="Wyy-Ic-dIW"/>
+                            <constraint firstAttribute="trailing" secondItem="VMb-vK-5uJ" secondAttribute="trailing" id="ZdC-2a-0qB"/>
+                            <constraint firstItem="jW1-vu-gtt" firstAttribute="top" secondItem="TSV-hC-ayP" secondAttribute="bottom" id="ZmB-Un-3AY"/>
+                            <constraint firstItem="VMb-vK-5uJ" firstAttribute="top" secondItem="8lT-88-0xf" secondAttribute="bottom" id="ceQ-sr-ZLI"/>
+                            <constraint firstItem="TSV-hC-ayP" firstAttribute="leading" secondItem="yiG-4W-oZc" secondAttribute="leading" id="f1d-lg-FHL"/>
+                            <constraint firstItem="TvK-fU-VyT" firstAttribute="leading" secondItem="yiG-4W-oZc" secondAttribute="leading" id="uvv-8u-kIs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="TSV-hC-ayP" id="2zV-Ea-I6e"/>
+                        <outlet property="mediaURL" destination="TvK-fU-VyT" id="645-hs-t4k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hie-qv-ELE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3704" y="90"/>
         </scene>
     </scenes>
     <resources>

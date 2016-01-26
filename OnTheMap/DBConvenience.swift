@@ -12,13 +12,18 @@ import UIKit
 extension DBClient{
     
     // authenticate with login {user, password}
-    func authenticateWithViewController(hostViewController: UIViewController, infoUser : [String:String], completionHandler: (success: Bool, errorString: NSError?) -> Void) {
+    func authenticateWithViewController(hostViewController: UIViewController, infoUser : [String:String], completionHandler: (success: Bool, error: NSError?) -> Void) {
         getSessionUdacity(infoUser) {(success,error) in
             if success {
-                print ("\(self.userID)")
-                completionHandler(success: true, errorString: nil)
+                self.getUserData(self.myInfo.uniqueKey){(success, error) in
+                    if success {
+                        completionHandler(success: true, error: nil)
+                    }else{
+                        completionHandler(success: false, error: error)
+                    }
+                }
             }else{
-                completionHandler(success: false, errorString: error)
+                completionHandler(success: false, error: error)
             }
         }
         
@@ -28,12 +33,17 @@ extension DBClient{
     func authenticateWithFacebook(hostViewController:UIViewController, accessToken : String, completionHandler : (success:Bool, error:NSError?) -> Void){
         getUserIDViaFacebookLogin(accessToken){(success,error) in
             if success {
-                print ("\(self.userID)")
-                completionHandler(success: true, error: nil)
+                self.getUserData(self.myInfo.uniqueKey){(success, error) in
+                    if success {
+                        completionHandler(success: true, error: nil)
+                    }else{
+                        completionHandler(success: false, error: error)
+                    }
+                }
             }else{
                 completionHandler(success: false, error: error)
             }
-        }        
+        }
     }
     
     //get userId via login Udacity
@@ -56,7 +66,7 @@ extension DBClient{
                     return
                 }
                 if let userID = account[DBClient.JSONResponseKey.userID] as? String {
-                    self.userID = userID
+                      self.myInfo.uniqueKey = userID
                     completionHandler(success: true, error: nil)
                 }
             }
@@ -81,12 +91,48 @@ extension DBClient{
                     return
                 }
                 if let userID = account[DBClient.JSONResponseKey.userID] as? String {
-                    self.userID = userID
+                    self.myInfo.uniqueKey = userID
                     completionHandler(success: true, error: nil)
                 }
             }
         }
     }
+    
+    func getUserData(userID : String, completionHandler : (success:Bool, error : NSError?) -> Void) {
+        let urlString = DBClient.Constants.baseURL + DBClient.Methods.userData + "\(userID)"
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        self.dataTaskWithRequest(request, subSetData: true){(JSONResult,error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completionHandler(success: false, error: error)
+            }else{
+                guard let account = JSONResult[DBClient.JSONResponseKey.user] as? [String:NSObject] else {
+                    completionHandler(success: false, error: error)
+                    return
+                }
+                if let firstName = account[DBClient.JSONResponseKey.firstName] as? String {
+                    self.myInfo.firstName = firstName
+                    if let lastName = account[DBClient.JSONResponseKey.lastName] as? String{
+                        self.myInfo.lastName = lastName
+                        completionHandler(success: true, error: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    /*
+    func getMyInfo(account : [String:NSObject]) -> (success:Bool, error : NSError?){
+        if let userID = account[DBClient.JSONResponseKey.userID] as? String {
+            myInfo.uniqueKey = userID
+            myInfo.firstName = account[DBClient.JSONResponseKey.firstName] as! String
+            myInfo.lastName = account[DBClient.JSONResponseKey.lastName] as! String
+            return (true, error: nil)
+        }else {
+            return (false, error : NSError(domain: "get Info", code: 3, userInfo: [NSLocalizedDescriptionKey : "Can't parse data to information"]))
+        }
+    }
+*/
     
     func logoutUdacity(hostViewController : UIViewController, completionHandler : (success:Bool, error:NSError?) -> Void){
         let urlString  = DBClient.Constants.baseURL + DBClient.Methods.session

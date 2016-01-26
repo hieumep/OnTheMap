@@ -17,6 +17,11 @@ class MapViewController : UIViewController{
     var mapViewDelegate = MapViewDelegate()
     
     override func viewDidLoad() {
+        
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+        self.tabBarController?.tabBar.hidden = false
         mapView.delegate = mapViewDelegate
         loadPinOnMap()
     }

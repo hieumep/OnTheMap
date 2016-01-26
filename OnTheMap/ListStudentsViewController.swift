@@ -13,7 +13,9 @@ class ListStudentsViewController : UITableViewController{
     
     @IBOutlet var studentTableView: UITableView!
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = false
+        tabBarController?.tabBar.hidden = false
         loadStudentObjects()
        
     }
