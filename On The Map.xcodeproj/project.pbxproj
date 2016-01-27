@@ -17,6 +17,7 @@
 		517CBF101C58253F007544BB /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517CBF0F1C58253F007544BB /* TextViewDelegate.swift */; };
 		518522B71C53573B00C7E514 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518522B61C53573B00C7E514 /* FBSDKCoreKit.framework */; };
 		518522B91C53574300C7E514 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518522B81C53574300C7E514 /* FBSDKLoginKit.framework */; };
+		5185FDA91C58A46D00A3BE3D /* extensionLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5185FDA81C58A46D00A3BE3D /* extensionLoginVC.swift */; };
 		518AF41E1C54028100157AAA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518AF41D1C54028100157AAA /* MapViewController.swift */; };
 		519128BD1C52FB8B004617AE /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519128BA1C52FB8B004617AE /* Roboto-Medium.ttf */; };
 		519128BE1C52FB8B004617AE /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519128BB1C52FB8B004617AE /* Roboto-Regular.ttf */; };
@@ -44,6 +45,7 @@
 		518522B61C53573B00C7E514 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		518522B81C53574300C7E514 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		518522BA1C5358B600C7E514 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		5185FDA81C58A46D00A3BE3D /* extensionLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensionLoginVC.swift; sourceTree = "<group>"; };
 		518AF41D1C54028100157AAA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		519128BA1C52FB8B004617AE /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		519128BB1C52FB8B004617AE /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -81,6 +83,14 @@
 				518522B61C53573B00C7E514 /* FBSDKCoreKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5185FDAA1C58A8D100A3BE3D /* Extenstion Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5185FDA81C58A46D00A3BE3D /* extensionLoginVC.swift */,
+			);
+			name = "Extenstion Controller";
 			sourceTree = "<group>";
 		};
 		519128B91C52FAE5004617AE /* SupportFont */ = {
@@ -152,6 +162,7 @@
 		51C1466F1C52F46100CA75E6 /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
+				5185FDAA1C58A8D100A3BE3D /* Extenstion Controller */,
 				519128CA1C533D4C004617AE /* Controller */,
 				519128C31C530705004617AE /* Model */,
 				519128C01C5301F8004617AE /* ControllerDelegate */,
@@ -239,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5185FDA91C58A46D00A3BE3D /* extensionLoginVC.swift in Sources */,
 				51C146731C52F46100CA75E6 /* LoginViewController.swift in Sources */,
 				519128C71C53079C004617AE /* DBClient.swift in Sources */,
 				517CBF021C543F0B007544BB /* SLOConvenience.swift in Sources */,

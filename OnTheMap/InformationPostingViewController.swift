@@ -17,16 +17,26 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
     let textViewDelegate = TextViewDelegate()
     var location : (CLLocationCoordinate2D)? = nil
     let locationManager = CLLocationManager()
+    var tapRecognizer: UITapGestureRecognizer? = nil
     
     override func viewDidLoad() {
-        locationText.delegate = textViewDelegate
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
         self.tabBarController?.tabBar.hidden = true
-        
+        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        tapRecognizer!.numberOfTapsRequired = 1
+        locationText.delegate = textViewDelegate
+        addKeyboardDismissRecognizer()
     }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        removeKeyboardDismissRecognizer()
+    }
+
     @IBAction func currentLocationTouchUp(sender: AnyObject) {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -66,7 +76,7 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         CLGeocoder().reverseGeocodeLocation(manager.location!){(placemarks, error) in
             if let error = error {
-                print("Reverse geocoder failed with error" + error.localizedDescription)
+                self.displayError(error.localizedDescription)
                 return
             }
             
@@ -75,7 +85,7 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
                 self.locationManager.stopUpdatingLocation()
                 self.sentLocationToDetailMap(placemark)
             } else {
-                print("Problem with the data received from geocoder")
+                self.displayError("Problem with the data received from geocoder")
             }
         }
     }
@@ -88,7 +98,20 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
         self.navigationController?.pushViewController(detailLocationVC, animated: true)    }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Error while updating location " + error.localizedDescription)
+        displayError(error.localizedDescription)
     }
+    
+    func addKeyboardDismissRecognizer() {
+        self.view.addGestureRecognizer(tapRecognizer!)
+    }
+    
+    func removeKeyboardDismissRecognizer() {
+        self.view.removeGestureRecognizer(tapRecognizer!)
+    }
+    
+    func handleSingleTap(recognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+
     
 }

@@ -36,27 +36,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UdacityLogo" highlightedImage="UdacityLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ZRj-Tp-P2e">
-                                <rect key="frame" x="180" y="125" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="FvP-qL-Ex3"/>
-                                    <constraint firstAttribute="height" constant="128" id="cCd-Nr-83i"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BcA-Ch-ent">
-                                <rect key="frame" x="20" y="319" width="560" height="230"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BcA-Ch-ent">
+                                <rect key="frame" x="20" y="273" width="560" height="228"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acy-ZU-myF">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acy-ZU-myF">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6a-1O-rcA">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6a-1O-rcA">
                                         <rect key="frame" x="0.0" y="40" width="560" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6F-ig-yqh">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6F-ig-yqh">
                                         <rect key="frame" x="0.0" y="80" width="560" height="36"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -67,15 +60,18 @@
                                             <action selector="loginTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oB5-xe-jk2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzX-zP-eP8">
-                                        <rect key="frame" x="0.0" y="126" width="560" height="36"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzX-zP-eP8">
+                                        <rect key="frame" x="0.0" y="126" width="560" height="34"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <state key="normal" title="Don't have an account? Sign up">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signUpTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iNc-Oa-QPf"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yke-j2-sb8">
-                                        <rect key="frame" x="0.0" y="172" width="560" height="58"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yke-j2-sb8">
+                                        <rect key="frame" x="0.0" y="170" width="560" height="58"/>
                                         <state key="normal" image="loginWithFacebook"/>
                                         <connections>
                                             <action selector="loginWithFacebookTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Baf-Iw-sve"/>
@@ -83,23 +79,30 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oy1-ad-8tF">
-                                <rect key="frame" x="208" y="246" width="184" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oy1-ad-8tF">
+                                <rect key="frame" x="208" y="200" width="184" height="30"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="UdacityLogo" highlightedImage="UdacityLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ZRj-Tp-P2e">
+                                <rect key="frame" x="180" y="70" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="FvP-qL-Ex3"/>
+                                    <constraint firstAttribute="height" constant="128" id="cCd-Nr-83i"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BcA-Ch-ent" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="179-Yn-kfS"/>
-                            <constraint firstItem="ZRj-Tp-P2e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="105" id="3F4-ju-qvP"/>
+                            <constraint firstItem="ZRj-Tp-P2e" firstAttribute="top" relation="lessThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="3F4-ju-qvP"/>
                             <constraint firstItem="BcA-Ch-ent" firstAttribute="top" secondItem="oy1-ad-8tF" secondAttribute="bottom" constant="43" id="BSO-da-jmw"/>
                             <constraint firstItem="BcA-Ch-ent" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SFd-LG-18p"/>
                             <constraint firstItem="oy1-ad-8tF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UrO-vf-Twi"/>
+                            <constraint firstItem="oy1-ad-8tF" firstAttribute="top" secondItem="ZRj-Tp-P2e" secondAttribute="bottom" constant="2" id="cli-Pa-00z"/>
                             <constraint firstItem="ZRj-Tp-P2e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="coK-fb-f5w"/>
                             <constraint firstAttribute="trailing" secondItem="BcA-Ch-ent" secondAttribute="trailing" constant="20" id="g91-h4-CrX"/>
-                            <constraint firstItem="oy1-ad-8tF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="246" id="xx1-ka-def"/>
                         </constraints>
                     </view>
                     <connections>
@@ -463,16 +466,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TvK-fU-VyT">
-                                <rect key="frame" x="0.0" y="64" width="600" height="150"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="rxg-eX-aqO"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TSV-hC-ayP">
                                 <rect key="frame" x="0.0" y="213" width="600" height="387"/>
                             </mapView>
@@ -488,6 +481,16 @@
                                     <action selector="submitTouchUp:" destination="UdT-qy-0Eh" eventType="touchUpInside" id="VMO-9c-sHn"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter your URL" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TvK-fU-VyT">
+                                <rect key="frame" x="0.0" y="64" width="600" height="150"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="rxg-eX-aqO"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

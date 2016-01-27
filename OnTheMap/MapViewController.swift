@@ -45,6 +45,7 @@ class MapViewController : UIViewController{
         }
     }
     
+    //Log out with facebook login
     func removeFbData() {
         //Remove FB Data
         let fbManager = FBSDKLoginManager()
@@ -66,6 +67,7 @@ class MapViewController : UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    // add Pin annotation on the map
     func loadPinOnMap(){
         DBClient.sharedInstance().getListStudentObjects(){(results,error) in
             if let studentObjects = results {

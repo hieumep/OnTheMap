@@ -38,6 +38,7 @@ class ListStudentsViewController : UITableViewController{
         }
     }
     
+    //Log out with facebook login   
     func removeFbData() {
         //Remove FB Data
         let fbManager = FBSDKLoginManager()

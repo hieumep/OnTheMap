@@ -7,16 +7,7 @@
 //
 
 struct StudentObject{
-    /*
-    var objectId :String? = ""
-    var uniqueKey = ""
-    var firstName = ""
-    var lastName = ""
-    var mapString = ""
-    var mediaURL = ""
-    var latitude : Double = 0.0
-    var longitude : Double = 0.0
-*/
+  
     var objectId :String?
     var uniqueKey :String
     var firstName :String
@@ -49,12 +40,10 @@ struct StudentObject{
     }
     
     static func SOFromResults(results: [[String : AnyObject]]) -> [StudentObject] {
-        var studentObjects = [StudentObject]()
-        
+        var studentObjects = [StudentObject]()        
         for result in results {
             studentObjects.append(StudentObject(dictStudents: result))
         }
-        
         return studentObjects
     }
 

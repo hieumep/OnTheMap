@@ -10,6 +10,7 @@ import Foundation
 
 // Student Locaction Objects Convenience
 extension DBClient {
+    //get list of student from Server
     func getListStudentObjects (completionHandler : (Result:[StudentObject]?, error:NSError?) -> Void){
         let arguments = [
             DBClient.Arguments.limit : 100,
@@ -34,14 +35,12 @@ extension DBClient {
         }
     }
     
+    // Post student information to Server
     func postStudentLocation ( moreInfo : StudentObject, completionHandler : (success : Bool, error: NSError?) -> Void){
-       
         myInfo.mapString = moreInfo.mapString
         myInfo.mediaURL = moreInfo.mediaURL
         myInfo.latitude  = moreInfo.latitude
         myInfo.longitude = moreInfo.longitude
-
-        print ("day la \(myInfo.mapString)")
         let request = NSMutableURLRequest(URL: NSURL(string: DBClient.Methods.studentMethods)!)
         request.HTTPMethod = "POST"
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")

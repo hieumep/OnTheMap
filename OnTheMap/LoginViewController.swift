@@ -13,11 +13,23 @@ class LoginViewController: UIViewController{
 
     var session : NSURLSession!
     let textFieldDelegate = TextFieldDelegate()
+    var tapRecognizer: UITapGestureRecognizer? = nil
     
     @IBOutlet weak var textUserName: UITextField!
     @IBOutlet weak var textPassword: UITextField!
     
     @IBOutlet weak var Loginwithfacebook: UIButton!
+    
+    @IBAction func signUpTouchUp(sender: AnyObject) {
+        let checkNetwork = connectedToNetwork()
+        if checkNetwork.network{
+            let urlString = "https://www.udacity.com/account/auth#!/signup"
+            let app = UIApplication.sharedApplication()
+            app.openURL(NSURL(string: urlString)!)
+        }else{
+            displayError(checkNetwork.error)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +38,20 @@ class LoginViewController: UIViewController{
         textPassword.delegate = textFieldDelegate
         session = NSURLSession.sharedSession()
         loginWithAccessToken()
+        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        tapRecognizer!.numberOfTapsRequired = 1
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        addKeyboardDismissRecognizer()
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        removeKeyboardDismissRecognizer()
+        unsubscribeToKeyboadNotifications()
     }
     
     @IBAction func loginTouchUp(sender: AnyObject) {
@@ -55,25 +81,6 @@ class LoginViewController: UIViewController{
         facebookLogin()
     }
     
-    func completeLogin() {
-        dispatch_async(dispatch_get_main_queue(), {
-            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarViewController") as! UITabBarController
-            self.presentViewController(controller, animated: true, completion: nil)
-        })
-    }
-    
-
-    
-    func displayError(error: NSError?) {
-        dispatch_async(dispatch_get_main_queue(), {
-            let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)
-            let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler : nil)
-            alertVC.addAction(dismissAction)
-            self.presentViewController(alertVC, animated: true, completion: nil)
-        })
-    }
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -119,6 +126,23 @@ class LoginViewController: UIViewController{
         }
     }
     
+    func completeLogin() {
+        dispatch_async(dispatch_get_main_queue(), {
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarViewController") as! UITabBarController
+            self.presentViewController(controller, animated: true, completion: nil)
+        })
+    }
+    
+    func displayError(error: NSError?) {
+        dispatch_async(dispatch_get_main_queue(), {
+            let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler : nil)
+            alertVC.addAction(dismissAction)
+            self.presentViewController(alertVC, animated: true, completion: nil)
+        })
+    }
+    
+    //check network connection
     func connectedToNetwork() -> (network:Bool,error : NSError?) {
         let error = NSError(domain: "Network connection", code: 6, userInfo: [NSLocalizedDescriptionKey:"No network connection"])
         var zeroAddress = sockaddr_in()

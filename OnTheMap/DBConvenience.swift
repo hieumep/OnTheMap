@@ -98,6 +98,7 @@ extension DBClient{
         }
     }
     
+    //Get user information from Udacity
     func getUserData(userID : String, completionHandler : (success:Bool, error : NSError?) -> Void) {
         let urlString = DBClient.Constants.baseURL + DBClient.Methods.userData + "\(userID)"
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)

@@ -15,6 +15,8 @@ class DetailLocationViewController : UIViewController{
     
     var location : CLLocationCoordinate2D?
     var searchString : String?
+    var tapRecognizer: UITapGestureRecognizer? = nil
+    var textViewDelegate = TextViewDelegate()
     
     @IBOutlet weak var mediaURL: UITextView!
     
@@ -22,6 +24,11 @@ class DetailLocationViewController : UIViewController{
     
     override func viewDidAppear(animated: Bool) {
         mapView.delegate = mapViewDelegate
+        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        tapRecognizer!.numberOfTapsRequired = 1
+        mediaURL.delegate = textViewDelegate
+        addKeyboardDismissRecognizer()
+        // add pin and zoom to location
         if location != nil {
             let annotation = MKPointAnnotation()
             annotation.coordinate = location!
@@ -34,6 +41,10 @@ class DetailLocationViewController : UIViewController{
         }
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        removeKeyboardDismissRecognizer()
+    }
     
     @IBAction func submitTouchUp(sender: AnyObject) {
         var moreInfo = StudentObject()
@@ -69,5 +80,16 @@ class DetailLocationViewController : UIViewController{
             self.presentViewController(alertVC, animated: true, completion: nil)
         })
     }
-
+    
+    func addKeyboardDismissRecognizer() {
+        self.view.addGestureRecognizer(tapRecognizer!)
+    }
+    
+    func removeKeyboardDismissRecognizer() {
+        self.view.removeGestureRecognizer(tapRecognizer!)
+    }
+    
+    func handleSingleTap(recognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
 }
