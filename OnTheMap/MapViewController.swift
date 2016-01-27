@@ -55,9 +55,7 @@ class MapViewController : UIViewController{
     func displayError(error: NSError?) {
         dispatch_async(dispatch_get_main_queue(), {
             let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)
-            let dismissAction = UIAlertAction(title: "Dismiss", style: .Default) { (action) -> Void in
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler : nil)
             alertVC.addAction(dismissAction)
             self.presentViewController(alertVC, animated: true, completion: nil)
         })

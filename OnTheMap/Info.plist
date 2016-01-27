@@ -2,7 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Can the App use your's location'</string>
+   	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Medium.ttf</string>
 		<string>Roboto-Thin.ttf</string>
@@ -33,7 +35,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
-	<array>
+    <array>
 		<string>armv7</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
@@ -48,8 +50,8 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb365362206864879</string>
-                <string>fbauth2</string>
-            </array>
+				<string>fbauth2</string>
+			</array>
 		</dict>
 	</array>
 	<key>FacebookAppID</key>

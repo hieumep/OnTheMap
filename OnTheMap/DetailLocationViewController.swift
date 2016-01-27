@@ -47,12 +47,27 @@ class DetailLocationViewController : UIViewController{
                     dispatch_async(dispatch_get_main_queue(),{
                         self.navigationController?.popToRootViewControllerAnimated(true)
                     })
+                }else{
+                    self.displayError(error)
                 }
             }
+        }else{
+            let error = NSError(domain: "Detail Location View", code: 7, userInfo: [NSLocalizedDescriptionKey:"URL is invalid/empty"])
+            displayError(error)
         }
     }
     
     @IBAction func cancelTouchUp(sender: AnyObject) {        
         navigationController?.popToRootViewControllerAnimated(true)
     }
+    
+    func displayError(error: NSError?) {
+        dispatch_async(dispatch_get_main_queue(), {
+            let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler : nil)
+            alertVC.addAction(dismissAction)
+            self.presentViewController(alertVC, animated: true, completion: nil)
+        })
+    }
+
 }

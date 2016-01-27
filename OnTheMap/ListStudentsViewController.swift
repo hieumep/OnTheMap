@@ -19,6 +19,31 @@ class ListStudentsViewController : UITableViewController{
         loadStudentObjects()
        
     }
+    @IBAction func reloadData(sender: AnyObject) {
+        loadStudentObjects()
+    }
+    
+    @IBAction func logoutTouchUp(sender: AnyObject) {
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            removeFbData()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }else{
+            DBClient.sharedInstance().logoutUdacity(self){(success,error) in
+                if success {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }else{
+                    self.displayError(error)
+                }
+            }
+        }
+    }
+    
+    func removeFbData() {
+        //Remove FB Data
+        let fbManager = FBSDKLoginManager()
+        fbManager.logOut()
+        FBSDKAccessToken.setCurrentAccessToken(nil)
+    }
     
     func loadStudentObjects (){
         DBClient.sharedInstance().getListStudentObjects(){(results,error) in
@@ -26,7 +51,6 @@ class ListStudentsViewController : UITableViewController{
                 self.studentObjects = studentObjects
                 dispatch_async(dispatch_get_main_queue()){
                     self.studentTableView.reloadData()
-                    print("success wa")
                 }
             }else{
                 self.displayError(error)
@@ -67,9 +91,7 @@ class ListStudentsViewController : UITableViewController{
     func displayError(error: NSError?) {
         dispatch_async(dispatch_get_main_queue(), {
             let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)
-            let dismissAction = UIAlertAction(title: "Dismiss", style: .Default) { (action) -> Void in
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler : nil)
             alertVC.addAction(dismissAction)
             self.presentViewController(alertVC, animated: true, completion: nil)
         })

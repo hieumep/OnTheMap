@@ -16,6 +16,7 @@
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
         </mutableArray>
         <mutableArray key="Roboto-Thin.ttf">
             <string>Roboto-Thin</string>
@@ -189,9 +190,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="Phf-n6-pFe">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="nM2-tf-nki"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="nM2-tf-nki">
+                            <connections>
+                                <action selector="logoutTouchUp:" destination="ePl-tX-ikN" id="pfy-iS-0IZ"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="LHc-5R-pY1"/>
+                            <barButtonItem systemItem="refresh" id="LHc-5R-pY1">
+                                <connections>
+                                    <action selector="reloadData:" destination="ePl-tX-ikN" id="UNO-HB-Hnp"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="Pin" id="gaV-FQ-P87">
                                 <connections>
                                     <segue destination="msU-2o-rNy" kind="showDetail" identifier="postingViewSegue" action="showViewController:sender:" id="FZJ-tF-0M3"/>
@@ -318,26 +327,42 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNI-x2-Pe6">
                                 <rect key="frame" x="0.0" y="474" width="600" height="82"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rk-xn-cIb">
-                                        <rect key="frame" x="228" y="23" width="145" height="36"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
-                                        <state key="normal" title="Find on the Map">
-                                            <color key="titleColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="findOnTheMapTouchUp:" destination="msU-2o-rNy" eventType="touchUpInside" id="loy-Z6-bcj"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W73-4y-hnZ">
+                                        <rect key="frame" x="228" y="5" width="145" height="73"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rk-xn-cIb">
+                                                <rect key="frame" x="0.0" y="0.0" width="145" height="36"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                                <state key="normal" title="Find on the Map">
+                                                    <color key="titleColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="findOnTheMapTouchUp:" destination="msU-2o-rNy" eventType="touchUpInside" id="loy-Z6-bcj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tC7-r2-7qf">
+                                                <rect key="frame" x="0.0" y="41" width="145" height="32"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                                <state key="normal" title="Current location">
+                                                    <color key="titleColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="currentLocationTouchUp:" destination="msU-2o-rNy" eventType="touchUpInside" id="MKZ-ws-aX9"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="82" id="948-VI-OLp"/>
-                                    <constraint firstItem="6rk-xn-cIb" firstAttribute="centerX" secondItem="TNI-x2-Pe6" secondAttribute="centerX" id="pLy-eP-h4D"/>
-                                    <constraint firstItem="6rk-xn-cIb" firstAttribute="centerY" secondItem="TNI-x2-Pe6" secondAttribute="centerY" id="yhY-4D-3Sy"/>
+                                    <constraint firstItem="W73-4y-hnZ" firstAttribute="centerX" secondItem="TNI-x2-Pe6" secondAttribute="centerX" id="mlL-LM-dsb"/>
+                                    <constraint firstItem="W73-4y-hnZ" firstAttribute="centerY" secondItem="TNI-x2-Pe6" secondAttribute="centerY" id="nT6-JW-N7h"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ITH-u0-2F5">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter Your Location Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ITH-u0-2F5">
                                 <rect key="frame" x="0.0" y="211" width="600" height="265"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -498,6 +523,6 @@
         <image name="map" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CaB-k9-SUB"/>
+        <segue reference="FZJ-tF-0M3"/>
     </inferredMetricsTieBreakers>
 </document>
