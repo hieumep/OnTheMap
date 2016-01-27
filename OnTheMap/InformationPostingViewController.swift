@@ -73,14 +73,16 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
         self.presentViewController(alertVC, animated: true, completion: nil)
     }
     
+    //Still have problem it request few times not only one
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        CLGeocoder().reverseGeocodeLocation(manager.location!){(placemarks, error) in
+        let geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(manager.location!){(placemarks, error) in
             if let error = error {
                 self.displayError(error.localizedDescription)
                 return
             }
             
-            if placemarks!.count >= 0 {
+            if placemarks!.count > 0 {
                 let placemark = placemarks![0] as CLPlacemark
                 self.locationManager.stopUpdatingLocation()
                 self.sentLocationToDetailMap(placemark)
@@ -91,6 +93,7 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
     }
     
     func sentLocationToDetailMap(placeMark : CLPlacemark){
+        
         let location = placeMark.location?.coordinate
         let detailLocationVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetaiLocationViewController") as! DetailLocationViewController
         detailLocationVC.location = location
