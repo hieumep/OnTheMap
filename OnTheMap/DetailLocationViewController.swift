@@ -38,6 +38,7 @@ class DetailLocationViewController : UIViewController{
             let span = MKCoordinateSpanMake(0.5, 0.5)
             let region = MKCoordinateRegionMake(location!, span)
             self.mapView.setRegion(region, animated: true)
+            
         }
     }
     
@@ -91,5 +92,5 @@ class DetailLocationViewController : UIViewController{
     
     func handleSingleTap(recognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
-    }
+    }    
 }

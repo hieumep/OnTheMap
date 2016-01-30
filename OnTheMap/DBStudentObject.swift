@@ -7,7 +7,7 @@
 //
 
 struct StudentObject{
-  
+  //  static var studentObjects = [StudentObject]()
     var objectId :String?
     var uniqueKey :String
     var firstName :String

@@ -12,6 +12,7 @@ import CoreLocation
 
 class InformationPostingViewController : UIViewController,CLLocationManagerDelegate {
     
+    var activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var locationText: UITextView!
     
     let textViewDelegate = TextViewDelegate()
@@ -20,7 +21,8 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
     var tapRecognizer: UITapGestureRecognizer? = nil
     
     override func viewDidLoad() {
-        
+        activityIndicator = UIActivityIndicatorView(frame: view.frame)
+        activityIndicator.activityIndicatorViewStyle = .WhiteLarge
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -39,6 +41,7 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
 
     @IBAction func currentLocationTouchUp(sender: AnyObject) {
         locationManager.delegate = self
+        startActivityIndicator()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -47,8 +50,14 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
         if locationText.text.isEmpty {
             displayError("Must Enter a Location")
         }else{
+            startActivityIndicator()
             getLocation(locationText.text)
         }
+    }
+    
+   
+    @IBAction func cancelTouchUp(sender: AnyObject) {
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func getLocation(locationText : String){
@@ -59,7 +68,7 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
 
             }else {
                 if placemarks?.count > 0 {
-                    let placemark = placemarks![0]
+                    let placemark = placemarks![0]                    
                     self.sentLocationToDetailMap(placemark)
                 }
             }
@@ -71,6 +80,7 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
         let alerAction = UIAlertAction(title: "Dismiss", style:.Cancel, handler: nil)
         alertVC.addAction(alerAction)
         self.presentViewController(alertVC, animated: true, completion: nil)
+        stopActivityIndicator()
     }
     
     //Still have problem it request few times not only one
@@ -87,10 +97,13 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
                 self.locationManager.stopUpdatingLocation()
                 self.sentLocationToDetailMap(placemark)
             } else {
+                
                 self.displayError("Problem with the data received from geocoder")
             }
         }
     }
+    
+    
     
     func sentLocationToDetailMap(placeMark : CLPlacemark){
         
@@ -116,5 +129,21 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
         self.view.endEditing(true)
     }
 
+    func startActivityIndicator(){
+        for view in self.view.subviews{
+            view.alpha = 0.3
+        }
+        self.view.addSubview(activityIndicator)
+        self.view.bringSubviewToFront(activityIndicator)
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivityIndicator(){
+        for view in self.view.subviews{
+            view.alpha = 1
+        }
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
+    }
     
 }

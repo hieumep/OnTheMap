@@ -10,11 +10,27 @@ import Foundation
 
 // Student Locaction Objects Convenience
 extension DBClient {
+    
+    // add List of student into struct
+    func getListStudent(completionHandler : (success : Bool, error : NSError?) -> Void){
+        getStudentObjects(){(result,error) in
+            dispatch_async(dispatch_get_main_queue(),{
+                if error == nil {
+                    DBStudent.sharedInstance().studentObjects = result!
+                    completionHandler(success:true, error:nil)
+                }else{
+                    completionHandler(success: false, error: nil)
+                }
+            
+        })
+        }
+    }
+    
     //get list of student from Server
-    func getListStudentObjects (completionHandler : (Result:[StudentObject]?, error:NSError?) -> Void){
+    func getStudentObjects (completionHandler : (Result:[StudentObject]?, error:NSError?) -> Void){
         let arguments = [
             DBClient.Arguments.limit : 100,
-          //  DBClient.Arguments.order : "-updateAt"
+            DBClient.Arguments.order : "-createdAt"
         ]
         let urlString = DBClient.Methods.studentMethods + DBClient.escapedParameters(arguments)
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)

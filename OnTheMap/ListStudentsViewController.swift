@@ -9,18 +9,17 @@
 import UIKit
 
 class ListStudentsViewController : UITableViewController{
-    var studentObjects = [StudentObject]()
     
     @IBOutlet var studentTableView: UITableView!
     
     override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBarHidden = false
         tabBarController?.tabBar.hidden = false
-        loadStudentObjects()
+       // loadStudentObjects()
        
     }
     @IBAction func reloadData(sender: AnyObject) {
-        loadStudentObjects()
+      //  loadStudentObjects()
     }
     
     @IBAction func logoutTouchUp(sender: AnyObject) {
@@ -45,7 +44,7 @@ class ListStudentsViewController : UITableViewController{
         fbManager.logOut()
         FBSDKAccessToken.setCurrentAccessToken(nil)
     }
-    
+    /*
     func loadStudentObjects (){
         DBClient.sharedInstance().getListStudentObjects(){(results,error) in
             if let studentObjects = results {
@@ -55,18 +54,19 @@ class ListStudentsViewController : UITableViewController{
                 }
             }else{
                 self.displayError(error)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
     }
-    
+    */
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentObjects.count
+        return DBStudent.sharedInstance().studentObjects.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         /* Get cell type */
         let cellReuseIdentifier = "studentCell"
-        let studentObject = studentObjects[indexPath.row]
+        let studentObject = DBStudent.sharedInstance().studentObjects[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! ListStudentViewcell
         
         /* Set cell defaults */
@@ -79,7 +79,7 @@ class ListStudentsViewController : UITableViewController{
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let studentObject = studentObjects[indexPath.row]
+        let studentObject = DBStudent.sharedInstance().studentObjects[indexPath.row]
         let urlString = studentObject.mediaURL
         let app = UIApplication.sharedApplication()
         app.openURL(NSURL(string: urlString)!)

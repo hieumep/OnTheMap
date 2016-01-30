@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		517A53321C5B40EB000891AF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518AF41D1C54028100157AAA /* MapViewController.swift */; };
+		517A53341C5B5337000891AF /* DBStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A53331C5B5337000891AF /* DBStudent.swift */; };
 		517CBF021C543F0B007544BB /* SLOConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517CBF011C543F0B007544BB /* SLOConvenience.swift */; };
 		517CBF041C5441CB007544BB /* DBStudentObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517CBF031C5441CB007544BB /* DBStudentObject.swift */; };
 		517CBF061C5451EA007544BB /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517CBF051C5451EA007544BB /* MapViewDelegate.swift */; };
@@ -18,7 +20,7 @@
 		518522B71C53573B00C7E514 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518522B61C53573B00C7E514 /* FBSDKCoreKit.framework */; };
 		518522B91C53574300C7E514 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518522B81C53574300C7E514 /* FBSDKLoginKit.framework */; };
 		5185FDA91C58A46D00A3BE3D /* extensionLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5185FDA81C58A46D00A3BE3D /* extensionLoginVC.swift */; };
-		518AF41E1C54028100157AAA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518AF41D1C54028100157AAA /* MapViewController.swift */; };
+		5185FDAC1C5B354200A3BE3D /* tabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5185FDAB1C5B354200A3BE3D /* tabBarController.swift */; };
 		519128BD1C52FB8B004617AE /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519128BA1C52FB8B004617AE /* Roboto-Medium.ttf */; };
 		519128BE1C52FB8B004617AE /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519128BB1C52FB8B004617AE /* Roboto-Regular.ttf */; };
 		519128BF1C52FB8B004617AE /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519128BC1C52FB8B004617AE /* Roboto-Thin.ttf */; };
@@ -34,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		517A53331C5B5337000891AF /* DBStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBStudent.swift; sourceTree = "<group>"; };
 		517CBF011C543F0B007544BB /* SLOConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLOConvenience.swift; sourceTree = "<group>"; };
 		517CBF031C5441CB007544BB /* DBStudentObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBStudentObject.swift; sourceTree = "<group>"; };
 		517CBF051C5451EA007544BB /* MapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		518522B81C53574300C7E514 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		518522BA1C5358B600C7E514 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		5185FDA81C58A46D00A3BE3D /* extensionLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensionLoginVC.swift; sourceTree = "<group>"; };
+		5185FDAB1C5B354200A3BE3D /* tabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tabBarController.swift; sourceTree = "<group>"; };
 		518AF41D1C54028100157AAA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		519128BA1C52FB8B004617AE /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		519128BB1C52FB8B004617AE /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				519128C81C531101004617AE /* DBConvenience.swift */,
 				517CBF011C543F0B007544BB /* SLOConvenience.swift */,
 				517CBF031C5441CB007544BB /* DBStudentObject.swift */,
+				517A53331C5B5337000891AF /* DBStudent.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 				517CBF091C545C07007544BB /* ListStudentViewCell.swift */,
 				517CBF0B1C547512007544BB /* InformationPostingViewController.swift */,
 				517CBF0D1C5488FA007544BB /* DetailLocationViewController.swift */,
+				5185FDAB1C5B354200A3BE3D /* tabBarController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -251,11 +257,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5185FDA91C58A46D00A3BE3D /* extensionLoginVC.swift in Sources */,
+				5185FDAC1C5B354200A3BE3D /* tabBarController.swift in Sources */,
 				51C146731C52F46100CA75E6 /* LoginViewController.swift in Sources */,
 				519128C71C53079C004617AE /* DBClient.swift in Sources */,
 				517CBF021C543F0B007544BB /* SLOConvenience.swift in Sources */,
 				51C146711C52F46100CA75E6 /* AppDelegate.swift in Sources */,
 				517CBF0C1C547512007544BB /* InformationPostingViewController.swift in Sources */,
+				517A53341C5B5337000891AF /* DBStudent.swift in Sources */,
 				517CBF041C5441CB007544BB /* DBStudentObject.swift in Sources */,
 				517CBF101C58253F007544BB /* TextViewDelegate.swift in Sources */,
 				517CBF0E1C5488FA007544BB /* DetailLocationViewController.swift in Sources */,
@@ -265,7 +273,7 @@
 				517CBF061C5451EA007544BB /* MapViewDelegate.swift in Sources */,
 				519128C21C530236004617AE /* TextFieldDelegate.swift in Sources */,
 				519128C51C530776004617AE /* DBConstant.swift in Sources */,
-				518AF41E1C54028100157AAA /* MapViewController.swift in Sources */,
+				517A53321C5B40EB000891AF /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

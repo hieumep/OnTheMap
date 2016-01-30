@@ -117,7 +117,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="XBQ-ps-1PR">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarViewController" id="LZu-YS-8j9" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarViewController" id="LZu-YS-8j9" customClass="tabBarController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="GrR-Jq-AQl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -154,7 +154,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMZ-E5-Xgv">
                                             <rect key="frame" x="95" y="8" width="490" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mediaURL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptm-Y0-Dhe">
@@ -163,7 +163,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="BC4-Cb-VGT"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -280,24 +280,20 @@
                     <navigationItem key="navigationItem" title="On The Map" id="177-nu-JM2">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="zv5-WQ-zQh">
                             <connections>
-                                <action selector="logoutTouchUp:" destination="LEW-Ut-lif" id="pBS-if-aHJ"/>
+                                <action selector="logoutTouchUp:" destination="LEW-Ut-lif" id="e6Q-6f-kEF"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="vxe-3z-gc2">
                                 <connections>
-                                    <action selector="ReloadPinOnTheMap:" destination="LEW-Ut-lif" id="86j-qW-WRk"/>
+                                    <action selector="ReloadPinOnTheMap:" destination="LEW-Ut-lif" id="nKc-yc-klO"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="Pin" id="qbJ-ub-VtZ">
-                                <connections>
-                                    <segue destination="msU-2o-rNy" kind="showDetail" identifier="postingViewSegue" action="showViewController:sender:" id="CaB-k9-SUB"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem image="Pin" id="qbJ-ub-VtZ"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="jBV-EB-KId" id="YnZ-pv-6DC"/>
+                        <outlet property="mapView" destination="jBV-EB-KId" id="wCo-bU-PQo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="98d-X0-jRf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -323,7 +319,11 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Title" id="fpb-YZ-Df1">
-                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="STg-3q-46p"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="STg-3q-46p">
+                                            <connections>
+                                                <action selector="cancelTouchUp:" destination="msU-2o-rNy" id="Q8J-yR-uKi"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -437,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8DU-9P-Ctl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3019" y="90"/>
+            <point key="canvasLocation" x="3163" y="104"/>
         </scene>
         <!--Detail Location View Controller-->
         <scene sceneID="baO-1V-At8">
@@ -525,7 +525,4 @@
         <image name="loginWithFacebook" width="298" height="58"/>
         <image name="map" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="FZJ-tF-0M3"/>
-    </inferredMetricsTieBreakers>
 </document>

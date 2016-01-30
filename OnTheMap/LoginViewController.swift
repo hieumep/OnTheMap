@@ -130,9 +130,22 @@ class LoginViewController: UIViewController{
         dispatch_async(dispatch_get_main_queue(), {
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarViewController") as! UITabBarController
             self.presentViewController(controller, animated: true, completion: nil)
+            
         })
     }
-    
+/*
+    func completeLogin() {
+        
+            DBClient.sharedInstance().getListStudent(){(error) in
+                if let error = error {
+                    self.displayError(error)
+                }else{
+                    let controller = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarViewController") as! UITabBarController
+                    self.presentViewController(controller, animated: true, completion: nil)
+                }
+            }
+    }
+*/
     func displayError(error: NSError?) {
         dispatch_async(dispatch_get_main_queue(), {
             let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)

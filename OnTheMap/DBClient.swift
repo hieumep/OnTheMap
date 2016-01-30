@@ -34,6 +34,7 @@ class DBClient : NSObject{
                     if response.statusCode == 403 {
                         let errorString = [NSLocalizedDescriptionKey:"Invalid Email or Passowrd"]
                         completionHandler(result: nil, error:NSError(domain: "Connect sever", code: 403, userInfo: errorString))
+                        return
                     }
                     print("Your request returned an invalid response! Status code: \(response.statusCode)!")
                 } else if let response = response {
@@ -41,6 +42,7 @@ class DBClient : NSObject{
                 } else {
                     print("Your request returned an invalid response!")
                 }
+                completionHandler(result: nil, error: NSError(domain: "fail response", code: 7, userInfo: [NSLocalizedDescriptionKey: "Your request returned an invalid response"]))
                 return
             }
             
