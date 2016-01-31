@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController : UIViewController {
+class MapViewController : UIViewController, Refeshable {
     
    
     var mapViewDelegate = MapViewDelegate()
@@ -32,34 +32,12 @@ class MapViewController : UIViewController {
         loadStudentObjects()
     }
     
-    @IBAction func ReloadPinOnTheMap(sender: AnyObject) {
+    
+    func refesh(){
         let annotationsToRemove = mapView.annotations.filter { $0 !== mapView.userLocation }
         mapView.removeAnnotations( annotationsToRemove )
         loadStudentObjects()
-    }
-    
-    @IBAction func logoutTouchUp(sender: AnyObject) {
-        if FBSDKAccessToken.currentAccessToken() != nil {
-            removeFbData()
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }else{
-            DBClient.sharedInstance().logoutUdacity(self){(success,error) in
-                if success {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                }else{
-                    self.displayError(error)
-                }
-            }
-        }
-    }
-    
-    //Log out with facebook login
-    func removeFbData() {
-        //Remove FB Data
-        let fbManager = FBSDKLoginManager()
-        fbManager.logOut()
-        FBSDKAccessToken.setCurrentAccessToken(nil)
-    }
+    }    
     
     func displayError(error: NSError?) {
         stopActivityIndicator()

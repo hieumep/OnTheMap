@@ -128,9 +128,8 @@ class LoginViewController: UIViewController{
     
     func completeLogin() {
         dispatch_async(dispatch_get_main_queue(), {
-            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarViewController") as! UITabBarController
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("mapNavigationController") as! UINavigationController
             self.presentViewController(controller, animated: true, completion: nil)
-            
         })
     }
 

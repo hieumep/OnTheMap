@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Medium.ttf">
@@ -36,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BcA-Ch-ent">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BcA-Ch-ent">
                                 <rect key="frame" x="20" y="273" width="560" height="228"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acy-ZU-myF">
@@ -60,7 +59,7 @@
                                             <action selector="loginTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oB5-xe-jk2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzX-zP-eP8">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzX-zP-eP8">
                                         <rect key="frame" x="0.0" y="126" width="560" height="34"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <state key="normal" title="Don't have an account? Sign up">
@@ -70,7 +69,7 @@
                                             <action selector="signUpTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iNc-Oa-QPf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yke-j2-sb8">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yke-j2-sb8">
                                         <rect key="frame" x="0.0" y="170" width="560" height="58"/>
                                         <state key="normal" image="loginWithFacebook"/>
                                         <connections>
@@ -118,19 +117,20 @@
         <scene sceneID="XBQ-ps-1PR">
             <objects>
                 <tabBarController storyboardIdentifier="tabBarViewController" id="LZu-YS-8j9" customClass="tabBarController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="w8X-QH-5yF"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="GrR-Jq-AQl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="myq-Aw-ZWA" kind="relationship" relationship="viewControllers" id="6i8-ZT-QEl"/>
-                        <segue destination="ebi-vT-eQ1" kind="relationship" relationship="viewControllers" id="dJy-mK-Ztc"/>
+                        <segue destination="LEW-Ut-lif" kind="relationship" relationship="viewControllers" id="AVt-wF-4JB"/>
+                        <segue destination="ePl-tX-ikN" kind="relationship" relationship="viewControllers" id="N7S-ER-7dG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n2D-Pg-2Qg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1078" y="226"/>
+            <point key="canvasLocation" x="1742" y="64"/>
         </scene>
         <!--On The Map-->
         <scene sceneID="ZT5-G4-hHw">
@@ -192,25 +192,8 @@
                             <outlet property="delegate" destination="ePl-tX-ikN" id="SvO-Yu-nSV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="On The Map" id="Phf-n6-pFe">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="nM2-tf-nki">
-                            <connections>
-                                <action selector="logoutTouchUp:" destination="ePl-tX-ikN" id="pfy-iS-0IZ"/>
-                            </connections>
-                        </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="LHc-5R-pY1">
-                                <connections>
-                                    <action selector="reloadData:" destination="ePl-tX-ikN" id="UNO-HB-Hnp"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="Pin" id="gaV-FQ-P87">
-                                <connections>
-                                    <segue destination="msU-2o-rNy" kind="showDetail" identifier="postingViewSegue" action="showViewController:sender:" id="FZJ-tF-0M3"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="Item" id="byL-Dv-bGs"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="Phf-n6-pFe"/>
                     <connections>
                         <outlet property="studentTableView" destination="Z2M-Aq-OGw" id="P8w-TS-8Bk"/>
                     </connections>
@@ -222,36 +205,19 @@
         <!--Map Navigation Controller-->
         <scene sceneID="jZp-wf-102">
             <objects>
-                <navigationController title="Map Navigation Controller" id="myq-Aw-ZWA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mapNavigationController" title="Map Navigation Controller" id="myq-Aw-ZWA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="map" id="FjV-eQ-Y1e"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F3O-2y-Tmx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="LEW-Ut-lif" kind="relationship" relationship="rootViewController" id="x4F-dk-5wL"/>
+                        <segue destination="LZu-YS-8j9" kind="relationship" relationship="rootViewController" id="Sal-Lr-5so"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o2l-IN-wWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1752" y="90"/>
-        </scene>
-        <!--List Navigation Controller-->
-        <scene sceneID="Zy2-BU-Qim">
-            <objects>
-                <navigationController title="List Navigation Controller" id="ebi-vT-eQ1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="list" id="BBB-uP-CVN"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KrZ-dn-iVG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ePl-tX-ikN" kind="relationship" relationship="rootViewController" id="mzk-V3-GvT"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dd8-hh-Ndq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1752" y="859"/>
+            <point key="canvasLocation" x="1073" y="183"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="Mo5-dn-Fgz">
@@ -277,25 +243,8 @@
                             <constraint firstAttribute="trailing" secondItem="jBV-EB-KId" secondAttribute="trailing" id="vX7-hv-fzE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="On The Map" id="177-nu-JM2">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="zv5-WQ-zQh">
-                            <connections>
-                                <action selector="logoutTouchUp:" destination="LEW-Ut-lif" id="e6Q-6f-kEF"/>
-                            </connections>
-                        </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="vxe-3z-gc2">
-                                <connections>
-                                    <action selector="ReloadPinOnTheMap:" destination="LEW-Ut-lif" id="nKc-yc-klO"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="Pin" id="qbJ-ub-VtZ">
-                                <connections>
-                                    <segue destination="msU-2o-rNy" kind="showDetail" identifier="mapToPostingViewSegue" action="showViewController:sender:" id="sep-fv-TEc"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="Item" id="PnE-Mi-yE4"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="177-nu-JM2"/>
                     <connections>
                         <outlet property="mapView" destination="jBV-EB-KId" id="wCo-bU-PQo"/>
                     </connections>
@@ -307,7 +256,7 @@
         <!--Information Posting View-->
         <scene sceneID="pzA-Kg-XwJ">
             <objects>
-                <viewController title="Information Posting View" id="msU-2o-rNy" customClass="InformationPostingViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="informationPostingViewController" title="Information Posting View" id="msU-2o-rNy" customClass="InformationPostingViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J6e-VR-2JO"/>
                         <viewControllerLayoutGuide type="bottom" id="Cvw-d6-fpY"/>
@@ -334,10 +283,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNI-x2-Pe6">
                                 <rect key="frame" x="0.0" y="474" width="600" height="82"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W73-4y-hnZ">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W73-4y-hnZ">
                                         <rect key="frame" x="228" y="5" width="145" height="73"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rk-xn-cIb">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rk-xn-cIb">
                                                 <rect key="frame" x="0.0" y="0.0" width="145" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
@@ -348,7 +297,7 @@
                                                     <action selector="findOnTheMapTouchUp:" destination="msU-2o-rNy" eventType="touchUpInside" id="loy-Z6-bcj"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tC7-r2-7qf">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tC7-r2-7qf">
                                                 <rect key="frame" x="0.0" y="41" width="145" height="32"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
@@ -523,13 +472,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pin" width="32" height="32"/>
         <image name="UdacityLogo" width="256" height="256"/>
-        <image name="list" width="32" height="32"/>
         <image name="loginWithFacebook" width="298" height="58"/>
         <image name="map" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="sep-fv-TEc"/>
-    </inferredMetricsTieBreakers>
 </document>

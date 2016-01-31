@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListStudentsViewController : UITableViewController{
+class ListStudentsViewController : UITableViewController, Refeshable{
     
     @IBOutlet var studentTableView: UITableView!
     var activityIndicator = UIActivityIndicatorView()
@@ -21,32 +21,10 @@ class ListStudentsViewController : UITableViewController{
         loadStudentObjects()
        
     }
-    @IBAction func reloadData(sender: AnyObject) {
+    
+    func refesh() {
         loadStudentObjects()
-    }
-    
-    @IBAction func logoutTouchUp(sender: AnyObject) {
-        if FBSDKAccessToken.currentAccessToken() != nil {
-            removeFbData()
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }else{
-            DBClient.sharedInstance().logoutUdacity(self){(success,error) in
-                if success {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                }else{
-                    self.displayError(error)
-                }
-            }
-        }
-    }
-    
-    //Log out with facebook login   
-    func removeFbData() {
-        //Remove FB Data
-        let fbManager = FBSDKLoginManager()
-        fbManager.logOut()
-        FBSDKAccessToken.setCurrentAccessToken(nil)
-    }
+    }    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DBStudent.sharedInstance().studentObjects.count
