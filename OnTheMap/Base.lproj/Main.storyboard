@@ -36,7 +36,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BcA-Ch-ent">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BcA-Ch-ent">
                                 <rect key="frame" x="20" y="273" width="560" height="228"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acy-ZU-myF">
@@ -60,7 +60,7 @@
                                             <action selector="loginTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oB5-xe-jk2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzX-zP-eP8">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzX-zP-eP8">
                                         <rect key="frame" x="0.0" y="126" width="560" height="34"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <state key="normal" title="Don't have an account? Sign up">
@@ -70,7 +70,7 @@
                                             <action selector="signUpTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iNc-Oa-QPf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yke-j2-sb8">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yke-j2-sb8">
                                         <rect key="frame" x="0.0" y="170" width="560" height="58"/>
                                         <state key="normal" image="loginWithFacebook"/>
                                         <connections>
@@ -289,7 +289,11 @@
                                     <action selector="ReloadPinOnTheMap:" destination="LEW-Ut-lif" id="nKc-yc-klO"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="Pin" id="qbJ-ub-VtZ"/>
+                            <barButtonItem image="Pin" id="qbJ-ub-VtZ">
+                                <connections>
+                                    <segue destination="msU-2o-rNy" kind="showDetail" identifier="mapToPostingViewSegue" action="showViewController:sender:" id="sep-fv-TEc"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -330,10 +334,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNI-x2-Pe6">
                                 <rect key="frame" x="0.0" y="474" width="600" height="82"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W73-4y-hnZ">
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W73-4y-hnZ">
                                         <rect key="frame" x="228" y="5" width="145" height="73"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rk-xn-cIb">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rk-xn-cIb">
                                                 <rect key="frame" x="0.0" y="0.0" width="145" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
@@ -344,7 +348,7 @@
                                                     <action selector="findOnTheMapTouchUp:" destination="msU-2o-rNy" eventType="touchUpInside" id="loy-Z6-bcj"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tC7-r2-7qf">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tC7-r2-7qf">
                                                 <rect key="frame" x="0.0" y="41" width="145" height="32"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
@@ -525,4 +529,7 @@
         <image name="loginWithFacebook" width="298" height="58"/>
         <image name="map" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="sep-fv-TEc"/>
+    </inferredMetricsTieBreakers>
 </document>

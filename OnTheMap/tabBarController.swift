@@ -16,27 +16,6 @@ class tabBarController : UITabBarController{
     
     
     override func viewDidLoad() {
-        loadStudentObjects()
-    }
     
-    func loadStudentObjects (){
-        DBClient.sharedInstance().getListStudent(){(success,error) in
-            if !success{
-                self.displayError(error)
-            }else{
-                
-            }
-        }
     }
-    
-    func displayError(error: NSError?) {
-        dispatch_async(dispatch_get_main_queue(), {
-            let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)
-            let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler : nil)
-            alertVC.addAction(dismissAction)
-            self.presentViewController(alertVC, animated: true, completion: nil)
-        })
     }
-
-
-}

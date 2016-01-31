@@ -69,7 +69,7 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
             }else {
                 if placemarks?.count > 0 {
                     let placemark = placemarks![0]                    
-                    self.sentLocationToDetailMap(placemark)
+                    self.sentLocationToDetailMap(placemark,currentLocation: false)
                 }
             }
         }
@@ -95,7 +95,7 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
             if placemarks!.count > 0 {
                 let placemark = placemarks![0] as CLPlacemark
                 self.locationManager.stopUpdatingLocation()
-                self.sentLocationToDetailMap(placemark)
+                self.sentLocationToDetailMap(placemark, currentLocation: true)
             } else {
                 
                 self.displayError("Problem with the data received from geocoder")
@@ -105,13 +105,17 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
     
     
     
-    func sentLocationToDetailMap(placeMark : CLPlacemark){
-        
+    func sentLocationToDetailMap(placeMark : CLPlacemark, currentLocation : Bool){
         let location = placeMark.location?.coordinate
         let detailLocationVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetaiLocationViewController") as! DetailLocationViewController
         detailLocationVC.location = location
-        detailLocationVC.searchString = placeMark.locality
-        self.navigationController?.pushViewController(detailLocationVC, animated: true)    }
+        if currentLocation {
+            detailLocationVC.searchString = placeMark.locality
+        }else{
+            detailLocationVC.searchString = self.locationText.text
+        }
+        self.navigationController?.pushViewController(detailLocationVC, animated: true)
+    }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         displayError(error.localizedDescription)

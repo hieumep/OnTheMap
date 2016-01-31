@@ -11,15 +11,18 @@ import UIKit
 class ListStudentsViewController : UITableViewController{
     
     @IBOutlet var studentTableView: UITableView!
+    var activityIndicator = UIActivityIndicatorView()
     
     override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBarHidden = false
         tabBarController?.tabBar.hidden = false
-       // loadStudentObjects()
+        activityIndicator = UIActivityIndicatorView(frame: view.frame)
+        activityIndicator.activityIndicatorViewStyle = .WhiteLarge
+        loadStudentObjects()
        
     }
     @IBAction func reloadData(sender: AnyObject) {
-      //  loadStudentObjects()
+        loadStudentObjects()
     }
     
     @IBAction func logoutTouchUp(sender: AnyObject) {
@@ -44,21 +47,7 @@ class ListStudentsViewController : UITableViewController{
         fbManager.logOut()
         FBSDKAccessToken.setCurrentAccessToken(nil)
     }
-    /*
-    func loadStudentObjects (){
-        DBClient.sharedInstance().getListStudentObjects(){(results,error) in
-            if let studentObjects = results {
-                self.studentObjects = studentObjects
-                dispatch_async(dispatch_get_main_queue()){
-                    self.studentTableView.reloadData()
-                }
-            }else{
-                self.displayError(error)
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
-        }
-    }
-    */
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DBStudent.sharedInstance().studentObjects.count
     }
@@ -90,6 +79,7 @@ class ListStudentsViewController : UITableViewController{
     }
     
     func displayError(error: NSError?) {
+        stopActivityIndicator()
         dispatch_async(dispatch_get_main_queue(), {
             let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)
             let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler : nil)
@@ -97,4 +87,34 @@ class ListStudentsViewController : UITableViewController{
             self.presentViewController(alertVC, animated: true, completion: nil)
         })
     }
+    
+    func startActivityIndicator(){
+        for view in self.view.subviews{
+            view.alpha = 0.3
+        }
+        self.view.addSubview(activityIndicator)
+        self.view.bringSubviewToFront(activityIndicator)
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivityIndicator(){
+        for view in self.view.subviews{
+            view.alpha = 1
+        }
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
+    }
+    
+    func loadStudentObjects (){
+        startActivityIndicator()
+        DBClient.sharedInstance().getListStudent(){(success,error) in
+            if !success{
+                self.displayError(error)
+            }else{
+                self.studentTableView.reloadData()
+                self.stopActivityIndicator()
+            }
+        }
+    }
+
 }

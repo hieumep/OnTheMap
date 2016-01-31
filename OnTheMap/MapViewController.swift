@@ -20,8 +20,7 @@ class MapViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        }
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,16 +28,14 @@ class MapViewController : UIViewController {
         self.tabBarController?.tabBar.hidden = false
         activityIndicator = UIActivityIndicatorView(frame: view.frame)
         activityIndicator.activityIndicatorViewStyle = .WhiteLarge
-       // startActivityIndicator()
-        mapView.delegate = mapViewDelegate
-        loadPinOnMap()
-     //   loadStudentObjects()
+        mapView.delegate = mapViewDelegate      
+        loadStudentObjects()
     }
     
     @IBAction func ReloadPinOnTheMap(sender: AnyObject) {
         let annotationsToRemove = mapView.annotations.filter { $0 !== mapView.userLocation }
         mapView.removeAnnotations( annotationsToRemove )
-        loadPinOnMap()
+        loadStudentObjects()
     }
     
     @IBAction func logoutTouchUp(sender: AnyObject) {
@@ -65,6 +62,7 @@ class MapViewController : UIViewController {
     }
     
     func displayError(error: NSError?) {
+        stopActivityIndicator()
         dispatch_async(dispatch_get_main_queue(), {
             let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)
             let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler : nil)
@@ -80,6 +78,7 @@ class MapViewController : UIViewController {
 
     // add Pin annotation on the map
     func loadPinOnMap(){
+        var index  = 0
         var annotations = [MKPointAnnotation]()
         for studentObject in DBStudent.sharedInstance().studentObjects {
             
@@ -103,11 +102,12 @@ class MapViewController : UIViewController {
             
             // Finally we place the annotation in an array of annotations.
             annotations.append(annotation)
+            index += 1
         }
         
         // When the array is complete, we add the annotations to the map.
         self.mapView.addAnnotations(annotations)
-        stopActivityIndicator()
+        stopActivityIndicator()        
     }
     
    
@@ -126,7 +126,17 @@ class MapViewController : UIViewController {
         }
         activityIndicator.stopAnimating()
         activityIndicator.removeFromSuperview()
-        
+    }
+    
+    func loadStudentObjects (){
+        startActivityIndicator()
+        DBClient.sharedInstance().getListStudent(){(success,error) in
+            if !success{
+                self.displayError(error)
+            }else{
+                self.loadPinOnMap()
+            }
+        }
     }
 
 
