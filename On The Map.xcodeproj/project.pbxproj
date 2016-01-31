@@ -22,6 +22,7 @@
 		5185FDA91C58A46D00A3BE3D /* extensionLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5185FDA81C58A46D00A3BE3D /* extensionLoginVC.swift */; };
 		5185FDAC1C5B354200A3BE3D /* tabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5185FDAB1C5B354200A3BE3D /* tabBarController.swift */; };
 		5187254C1C5DDE7F00D84875 /* Refeshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5187254B1C5DDE7F00D84875 /* Refeshable.swift */; };
+		5187254E1C5DEE4100D84875 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5187254D1C5DEE4100D84875 /* Alert.swift */; };
 		519128BD1C52FB8B004617AE /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519128BA1C52FB8B004617AE /* Roboto-Medium.ttf */; };
 		519128BE1C52FB8B004617AE /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519128BB1C52FB8B004617AE /* Roboto-Regular.ttf */; };
 		519128BF1C52FB8B004617AE /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 519128BC1C52FB8B004617AE /* Roboto-Thin.ttf */; };
@@ -52,6 +53,7 @@
 		5185FDA81C58A46D00A3BE3D /* extensionLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensionLoginVC.swift; sourceTree = "<group>"; };
 		5185FDAB1C5B354200A3BE3D /* tabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tabBarController.swift; sourceTree = "<group>"; };
 		5187254B1C5DDE7F00D84875 /* Refeshable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refeshable.swift; sourceTree = "<group>"; };
+		5187254D1C5DEE4100D84875 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		518AF41D1C54028100157AAA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		519128BA1C52FB8B004617AE /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		519128BB1C52FB8B004617AE /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				5185FDA81C58A46D00A3BE3D /* extensionLoginVC.swift */,
 				5187254B1C5DDE7F00D84875 /* Refeshable.swift */,
+				5187254D1C5DEE4100D84875 /* Alert.swift */,
 			);
 			name = "Extenstion Controller";
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				517CBF061C5451EA007544BB /* MapViewDelegate.swift in Sources */,
 				519128C21C530236004617AE /* TextFieldDelegate.swift in Sources */,
 				519128C51C530776004617AE /* DBConstant.swift in Sources */,
+				5187254E1C5DEE4100D84875 /* Alert.swift in Sources */,
 				517A53321C5B40EB000891AF /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

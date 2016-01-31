@@ -38,7 +38,6 @@ class DetailLocationViewController : UIViewController{
             let span = MKCoordinateSpanMake(0.5, 0.5)
             let region = MKCoordinateRegionMake(location!, span)
             self.mapView.setRegion(region, animated: true)
-            
         }
     }
     
@@ -74,12 +73,8 @@ class DetailLocationViewController : UIViewController{
     }
     
     func displayError(error: NSError?) {
-        dispatch_async(dispatch_get_main_queue(), {
-            let alertVC = UIAlertController(title:"", message: error?.localizedDescription, preferredStyle: .Alert)
-            let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler : nil)
-            alertVC.addAction(dismissAction)
-            self.presentViewController(alertVC, animated: true, completion: nil)
-        })
+        let alertVC = Alert(controller: self, message: error?.localizedDescription)
+        alertVC.present()
     }
     
     func addKeyboardDismissRecognizer() {

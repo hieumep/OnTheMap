@@ -48,7 +48,8 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
     }
     @IBAction func findOnTheMapTouchUp(sender: AnyObject) {
         if locationText.text.isEmpty {
-            displayError("Must Enter a Location")
+            let error = NSError(domain: "location Text", code: 8, userInfo: [NSLocalizedDescriptionKey:"Text field is empty"])
+            self.displayError(error)
         }else{
             startActivityIndicator()
             getLocation(locationText.text)
@@ -64,8 +65,8 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(locationText){(placemarks,error) in
             if error != nil {
-                self.displayError("Invalid location")
-
+                let error = NSError(domain: "geoCoder", code: 8, userInfo: [NSLocalizedDescriptionKey:"Problem with the data received from geocoder"])
+                self.displayError(error)
             }else {
                 if placemarks?.count > 0 {
                     let placemark = placemarks![0]                    
@@ -75,12 +76,9 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
         }
     }
     
-    func displayError(errorString : String){
-        let alertVC = UIAlertController(title: nil, message: errorString, preferredStyle: .Alert)
-        let alerAction = UIAlertAction(title: "Dismiss", style:.Cancel, handler: nil)
-        alertVC.addAction(alerAction)
-        self.presentViewController(alertVC, animated: true, completion: nil)
-        stopActivityIndicator()
+    func displayError(error: NSError?) {
+        let alertVC = Alert(controller: self, message: error?.localizedDescription)
+        alertVC.present()
     }
     
     //Still have problem it request few times not only one
@@ -88,7 +86,7 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
         let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(manager.location!){(placemarks, error) in
             if let error = error {
-                self.displayError(error.localizedDescription)
+                self.displayError(error)
                 return
             }
             
@@ -97,8 +95,8 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
                 self.locationManager.stopUpdatingLocation()
                 self.sentLocationToDetailMap(placemark, currentLocation: true)
             } else {
-                
-                self.displayError("Problem with the data received from geocoder")
+                let error = NSError(domain: "geoCoder", code: 8, userInfo: [NSLocalizedDescriptionKey:"Problem with the data received from geocoder"])
+                self.displayError(error)
             }
         }
     }
@@ -118,7 +116,7 @@ class InformationPostingViewController : UIViewController,CLLocationManagerDeleg
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        displayError(error.localizedDescription)
+        displayError(error)
     }
     
     func addKeyboardDismissRecognizer() {

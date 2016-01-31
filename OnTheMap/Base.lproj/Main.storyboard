@@ -192,7 +192,7 @@
                             <outlet property="delegate" destination="ePl-tX-ikN" id="SvO-Yu-nSV"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="byL-Dv-bGs"/>
+                    <tabBarItem key="tabBarItem" title="" image="list" id="byL-Dv-bGs"/>
                     <navigationItem key="navigationItem" title="On The Map" id="Phf-n6-pFe"/>
                     <connections>
                         <outlet property="studentTableView" destination="Z2M-Aq-OGw" id="P8w-TS-8Bk"/>
@@ -243,7 +243,7 @@
                             <constraint firstAttribute="trailing" secondItem="jBV-EB-KId" secondAttribute="trailing" id="vX7-hv-fzE"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="PnE-Mi-yE4"/>
+                    <tabBarItem key="tabBarItem" title="" image="map" id="PnE-Mi-yE4"/>
                     <navigationItem key="navigationItem" title="On The Map" id="177-nu-JM2"/>
                     <connections>
                         <outlet property="mapView" destination="jBV-EB-KId" id="wCo-bU-PQo"/>
@@ -473,6 +473,7 @@
     </scenes>
     <resources>
         <image name="UdacityLogo" width="256" height="256"/>
+        <image name="list" width="32" height="32"/>
         <image name="loginWithFacebook" width="298" height="58"/>
         <image name="map" width="32" height="32"/>
     </resources>

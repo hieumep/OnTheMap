@@ -9,7 +9,7 @@
 import UIKit
 
 class tabBarController : UITabBarController{
-    // Learn this idea from other student
+    // Learn this ideas from other student
     override func viewDidLoad() {
         let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: "logoutTouchUp")
         let newLocationButton = UIBarButtonItem(image: UIImage(named: "Pin"), style: .Plain, target: self, action: "newLocationTouchUp")
