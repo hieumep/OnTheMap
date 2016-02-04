@@ -120,20 +120,7 @@ extension DBClient{
                 }
             }
         }
-    }
-    
-    /*
-    func getMyInfo(account : [String:NSObject]) -> (success:Bool, error : NSError?){
-        if let userID = account[DBClient.JSONResponseKey.userID] as? String {
-            myInfo.uniqueKey = userID
-            myInfo.firstName = account[DBClient.JSONResponseKey.firstName] as! String
-            myInfo.lastName = account[DBClient.JSONResponseKey.lastName] as! String
-            return (true, error: nil)
-        }else {
-            return (false, error : NSError(domain: "get Info", code: 3, userInfo: [NSLocalizedDescriptionKey : "Can't parse data to information"]))
-        }
-    }
-*/
+    }    
     
     func logoutUdacity(hostViewController : UIViewController, completionHandler : (success:Bool, error:NSError?) -> Void){
         let urlString  = DBClient.Constants.baseURL + DBClient.Methods.session
