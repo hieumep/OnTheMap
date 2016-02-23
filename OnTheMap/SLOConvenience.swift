@@ -30,7 +30,7 @@ extension DBClient {
     func getStudentObjects (completionHandler : (Result:[StudentObject]?, error:NSError?) -> Void){
         let arguments = [
             DBClient.Arguments.limit : 100,
-            DBClient.Arguments.order : "-createdAt"
+            DBClient.Arguments.order : "-updatedAt"
         ]
         let urlString = DBClient.Methods.studentMethods + DBClient.escapedParameters(arguments)
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
